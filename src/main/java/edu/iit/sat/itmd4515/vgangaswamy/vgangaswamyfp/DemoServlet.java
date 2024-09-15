@@ -21,8 +21,6 @@ public class DemoServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("https://www.iit.edu");
 
-
-
         // Hello
         LOG.log(Level.INFO, "I am info message from doGet method within Demo Servlet");
         LOG.log(Level.FINEST, "I am finest message from doGet method within Demo Servlet");
