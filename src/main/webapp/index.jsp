@@ -9,13 +9,18 @@
 <form method="post" action="/vgangaswamy-fp/language">
     <div>
         <label for="langId">Language ID Number</label>
-        <input type="text" id="langId" name="langId">
+        <select id="langId" name="langId">
+            <option value = "1"> Language #1 </option>
+            <option value = "2"> Language #2 </option>
+
+        </select>
     </div>
 
     <div>
         <label for="name">Language name</label>
         <input type="text" id="name" name="name">
     </div>
+    <button type = "submit"> Create Customer</button>
 </form>
 
 <br/>

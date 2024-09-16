@@ -18,11 +18,19 @@ public class LanguageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Correct LOG.info usage
         LOG.info("Inside LanguageServlet.doGet()");
+        resp.sendRedirect(req.getContextPath() + "/index.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Correct LOG.info usage
         LOG.info("Inside LanguageServlet.doPost()");
+
+        String language_idParam = req.getParameter("langId");
+        String nameParam = req.getParameter("name");
+
+        LOG.info("langId:\t\t\t" + language_idParam);
+        LOG.info("name:\t\t\t" + nameParam);
+
     }
 }
