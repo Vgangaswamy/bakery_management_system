@@ -1,4 +1,4 @@
-<img width="1134" alt="Screenshot 2024-09-16 at 9 54 38 PM" src="https://github.com/user-attachments/assets/c7be9039-0803-49a9-8372-652269acca8e"># itmd4515-f24-fp-Vgangaswamy
+# itmd4515-f24-fp-Vgangaswamy
 Project Screenshots:
 
 **If the user input passes validation:**
