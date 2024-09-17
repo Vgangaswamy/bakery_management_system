@@ -1,5 +1,6 @@
 # itmd4515-f24-fp-Vgangaswamy
 Project Screenshots:
+*************************************************************************************************************************************************************************************************
 
 **If the user input passes validation:**
 <img width="1134" alt="Screenshot1" src="https://github.com/user-attachments/assets/b9754e63-f021-4211-b912-401fcc8c2c98">
@@ -13,7 +14,7 @@ Project Screenshots:
 <img width="1134" alt="Screenshot4" src="https://github.com/user-attachments/assets/5f3a1174-15e3-4104-992f-6f880a6d4b59">
 - The above image displays the appropriate error messages to handle them
 
-
+*************************************************************************************************************************************************************************************************
 
 ** Graduate student Requirements: **
 - The below screenshot displays the newly created language_id and name of the language in the table.
