@@ -2,15 +2,15 @@
 Project Screenshots:
 
 **If the user input passes validation:**
-1) <img width="1134" alt="Screenshot1" src="https://github.com/user-attachments/assets/b9754e63-f021-4211-b912-401fcc8c2c98">
+<img width="1134" alt="Screenshot1" src="https://github.com/user-attachments/assets/b9754e63-f021-4211-b912-401fcc8c2c98">
 - The above Image is the BEFORE of the form
-2) <img width="1134" alt="Screenshot2" src="https://github.com/user-attachments/assets/325f41b2-b24f-48f3-b6e7-711ae9e8aa8c">
+<img width="1134" alt="Screenshot2" src="https://github.com/user-attachments/assets/325f41b2-b24f-48f3-b6e7-711ae9e8aa8c">
 - The above Image is the AFTER of the form, the confiramtion view.
 
 **If the user input does not pass validation**
-1) <img width="1134" alt="Screenshot3" src="https://github.com/user-attachments/assets/54599b7c-2740-4eec-ad75-4152d03de8de">
+<img width="1134" alt="Screenshot3" src="https://github.com/user-attachments/assets/54599b7c-2740-4eec-ad75-4152d03de8de">
 - The above image displays the fields with wrong input or null input
-2) <img width="1134" alt="Screenshot4" src="https://github.com/user-attachments/assets/5f3a1174-15e3-4104-992f-6f880a6d4b59">
+<img width="1134" alt="Screenshot4" src="https://github.com/user-attachments/assets/5f3a1174-15e3-4104-992f-6f880a6d4b59">
 - The above image displays the appropriate error messages to handle them
 
 ** Graduate student Requirements: **
