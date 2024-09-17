@@ -13,6 +13,8 @@ Project Screenshots:
 <img width="1134" alt="Screenshot4" src="https://github.com/user-attachments/assets/5f3a1174-15e3-4104-992f-6f880a6d4b59">
 - The above image displays the appropriate error messages to handle them
 
+
+
 ** Graduate student Requirements: **
 - The below screenshot displays the newly created language_id and name of the language in the table.
 <img width="907" alt="Screenshot 2024-09-16 at 10 13 30 PM" src="https://github.com/user-attachments/assets/f5e21b20-1603-433f-8473-bede1e391fe5">
