@@ -1,6 +1,5 @@
-package edu.iit.sat.itmd4515.vgangaswamy.vgangaswamyfp;
+package edu.iit.sat.itmd4515.vgangaswamy.lab3;
 
-import domain.Language;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,7 +16,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Set;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.lang.Integer.valueOf;

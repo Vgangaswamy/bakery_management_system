@@ -1,4 +1,4 @@
-package edu.iit.sat.itmd4515.vgangaswamy.vgangaswamyfp;
+package edu.iit.sat.itmd4515.vgangaswamy.lab3;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

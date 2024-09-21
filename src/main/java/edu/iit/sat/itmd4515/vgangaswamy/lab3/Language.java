@@ -1,4 +1,4 @@
-package domain;
+package edu.iit.sat.itmd4515.vgangaswamy.lab3;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
