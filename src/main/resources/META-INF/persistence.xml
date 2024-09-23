@@ -7,6 +7,7 @@
 
     <persistence-unit name="itmd4515testPU" transaction-type="RESOURCE_LOCAL">
 
+
         <class>edu.iit.sat.itmd4515.vgangaswamy.domain.Bakery</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
@@ -16,6 +17,9 @@
             <property name="jakarta.persistence.jdbc.user" value="itmd4515"/>
             <property name="jakarta.persistence.jdbc.password" value="itmd4515"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
         </properties>
+
     </persistence-unit>
 </persistence>

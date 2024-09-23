@@ -1,6 +1,8 @@
 package edu.iit.sat.itmd4515.vgangaswamy.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
@@ -10,6 +12,7 @@ public class Bakery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false, name = "product_name")
     private String name;
 
@@ -18,37 +21,27 @@ public class Bakery {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
+    @Min(0)
+    private float price;
+
+    @Min(0)
+    private int quantity;
+
+    @Column(nullable = false)
+    private boolean isAvailable;
+
     // Default constructor (required by JPA)
     public Bakery() {
     }
 
     // Constructor that accepts 'name', 'product_description', and 'ProductType'
-    public Bakery(String name, String product_description, ProductType type) {
+    public Bakery(String name, String product_description, ProductType type, float price, int quantity, boolean isAvailable) {
         this.name = name;
         this.product_description = product_description;
         this.type = type;
-    }
-
-    // Constructor for 'name' and 'product_description'
-    public Bakery(String name, String product_description) {
-        this.name = name;
-        this.product_description = product_description;
-    }
-
-    // Constructor for 'id' and 'name'
-    public Bakery(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    // Constructor for 'product_description'
-    public Bakery(String product_description) {
-        this.product_description = product_description;
-    }
-
-    // Constructor for 'ProductType'
-    public Bakery(ProductType type) {
-        this.type = type;
+        this.price = price;
+        this.quantity = quantity;
+        this.isAvailable = isAvailable;
     }
 
     // Getter and Setter for 'name'
@@ -87,21 +80,42 @@ public class Bakery {
         this.type = type;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
     // Equals and HashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Bakery)) return false;
         Bakery bakery = (Bakery) o;
-        if (this.id == null || bakery.id == null) {
-            return false;
-        }
-        return Objects.equals(getId(), bakery.getId());
+        return id != null && id.equals(bakery.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 
     // toString
@@ -112,6 +126,9 @@ public class Bakery {
                 ", name='" + name + '\'' +
                 ", product_description='" + product_description + '\'' +
                 ", type=" + type +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", isAvailable=" + isAvailable +
                 '}';
     }
 }

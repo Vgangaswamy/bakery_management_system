@@ -10,7 +10,7 @@ import jakarta.persistence.Persistence;
 public class Week5Demo {
     public static void main(String... args) {
 
-        Bakery product = new Bakery("Ice Cream Cake", "A delicious ice cream cake with chocolate layers.", ProductType.CAKES);
+        Bakery product = new Bakery("Test Data", "A delicious ice cream cake with chocolate layers", ProductType.CAKES,99,18,true);
 
         System.out.println("Before persists: " + product.toString());
         // Create an EntityManagerFactory using the persistence unit name
