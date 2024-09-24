@@ -1,4 +1,4 @@
-package edu.iit.sat.itmd4515.vgangaswamy;
+package edu.iit.sat.itmd4515.vgangaswamy.vgangaswamyfp;
 
 import edu.iit.sat.itmd4515.vgangaswamy.domain.Bakery;
 import edu.iit.sat.itmd4515.vgangaswamy.domain.ProductType;
