@@ -120,14 +120,13 @@ All of these entities would be related to each other in various ways, such as ba
     }
 ```
 The below screenshot shows the log for all the test cases respectively
-<img width="1496" alt="JPA test cases" src="https://github.com/user-attachments/assets/6ef4ff0e-f22a-489f-b47c-44b539bb9560">
+![JPA test cases.png](Screenshots%2FJPA%20test%20cases.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 JUnit test cases output screenshot(bean Validation)
 
-<img width="1496" alt="JUnit test cases ss" src="https://github.com/user-attachments/assets/a4d521bd-0843-4769-8450-4f4ad92eec60">
-
+![JUnit test cases ss.png](Screenshots%2FJUnit%20test%20cases%20ss.png)
 
 
 

@@ -17,8 +17,14 @@
             <property name="jakarta.persistence.jdbc.user" value="itmd4515"/>
             <property name="jakarta.persistence.jdbc.password" value="itmd4515"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>
+
+            <!-- Turn off SQL logging -->
+            <property name="eclipselink.logging.level" value="WARNING"/>
+
+            <!-- Optional: Turn off additional detailed SQL logs -->
+            <property name="eclipselink.logging.level.sql" value="OFF"/>
+            <property name="eclipselink.logging.level.transaction" value="OFF"/>
         </properties>
 
     </persistence-unit>
