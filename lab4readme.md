@@ -10,3 +10,8 @@ Given my prior experience and familiarity with this domain, I figured it would b
 **Employee** would represent the staff working in the bakery, and they might be involved in preparing different items. Lastly, 
 **Inventory** would track the stock of both bakery items and ingredients, helping the bakery manage its resources efficiently.
 All of these entities would be related to each other in various ways, such as bakery items having multiple ingredients and customers placing multiple orders.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**BakeryJPATest**
+
