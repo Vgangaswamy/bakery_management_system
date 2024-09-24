@@ -28,7 +28,7 @@ All of these entities would be related to each other in various ways, such as ba
       }
   ```
 3. After Each
-    // Delete everything from the table after each test
+   // Delete everything from the table after each test
    ```
     public void afterEach() {
         tx.begin();
