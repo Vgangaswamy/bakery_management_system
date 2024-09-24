@@ -120,7 +120,7 @@ All of these entities would be related to each other in various ways, such as ba
     }
 ```
 The below screenshot shows the log for all the test cases respectively
-<img width="1496" alt="JPA test screenshot of all cases" src="https://github.com/user-attachments/assets/67a4527b-2753-4388-b868-3f131ee896b6">
+<img width="1496" alt="JPA test cases" src="https://github.com/user-attachments/assets/6ef4ff0e-f22a-489f-b47c-44b539bb9560">
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
