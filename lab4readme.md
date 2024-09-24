@@ -17,15 +17,15 @@ All of these entities would be related to each other in various ways, such as ba
 1. BeforeEach
   //Before Each tests, I am creating a new "brioche" entity and logging it's creation
   ```
-  public void beforeEach() {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
-        Bakery brioche = new Bakery("brioche", "A delicious bread", ProductType.BREAD, 99, 18, true);
-        tx.begin();
-        em.persist(brioche);
-        tx.commit();
-        System.out.println("beforeEach: " + brioche.toString());
-    }
+    public void beforeEach() {
+          em = emf.createEntityManager();
+          tx = em.getTransaction();
+          Bakery brioche = new Bakery("brioche", "A delicious bread", ProductType.BREAD, 99, 18, true);
+          tx.begin();
+          em.persist(brioche);
+          tx.commit();
+          System.out.println("beforeEach: " + brioche.toString());
+      }
   ```
 3. After Each
     // Delete everything from the table after each test
