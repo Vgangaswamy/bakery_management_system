@@ -27,9 +27,9 @@ All of these entities would be related to each other in various ways, such as ba
           System.out.println("beforeEach: " + brioche.toString());
       }
   ```
-3. After Each
+2. After Each
    // Delete everything from the table after each test
-   ```
+ ```
     public void afterEach() {
         tx.begin();
         int deletedCount = em.createQuery("DELETE FROM Bakery").executeUpdate();
@@ -41,6 +41,39 @@ All of these entities would be related to each other in various ways, such as ba
         }
         em.close();
     }
-   ```  
+  ```
+3. CreateTest
+   Here I am creating a new entity with name "sourdough" and then checking its existence in the database through assertions
+ ```
+   @Test
+    public void createTest() {
+        // Creating a new Bakery item called "sourdough"
+        Bakery product = new Bakery("sourdough", "A delicious sourdough bread", ProductType.BREAD, 120, 15, true);
+        tx.begin();
+        em.persist(product);
+        tx.commit();
+
+        // Read it back from the database
+        Bakery readBackFromDatabase = em.find(Bakery.class, product.getId());
+        Assertions.assertNotNull(readBackFromDatabase);
+        Assertions.assertTrue(readBackFromDatabase.getId() > 0);
+        Assertions.assertEquals("sourdough", readBackFromDatabase.getName());
+    }
+```
+4. ReadTest
+   Here I am reading the name "brioche" i create before each test and confirming its existence through assertions and logging
+```
+   @Test
+    public void readTest() {
+        // Finding the "brioche" Bakery item
+        Bakery product = em.createQuery("select b from Bakery b where lower(b.name) = 'brioche'", Bakery.class)
+                .getSingleResult();
+        Assertions.assertNotNull(product, "Bakery item 'brioche' exists.");
+        Assertions.assertEquals("brioche", product.getName(), "The name is 'brioche'.");
+        Assertions.assertEquals(99, product.getPrice(), "The price is 99.");
+        System.out.println("Read test: " + product.toString());
+    }
+```
+
    
    
