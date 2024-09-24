@@ -122,6 +122,13 @@ All of these entities would be related to each other in various ways, such as ba
 The below screenshot shows the log for all the test cases respectively
 <img width="1496" alt="JPA test screenshot of all cases" src="https://github.com/user-attachments/assets/67a4527b-2753-4388-b868-3f131ee896b6">
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Junit test cases output screenshot(bean Validation)
+
+<img width="1496" alt="JUnit test cases" src="https://github.com/user-attachments/assets/036c59e4-bac8-432c-bdb6-150812b27bc3">
+
+
 
    
    
