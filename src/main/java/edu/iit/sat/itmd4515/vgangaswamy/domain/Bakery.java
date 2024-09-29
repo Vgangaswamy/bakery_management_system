@@ -3,6 +3,8 @@ package edu.iit.sat.itmd4515.vgangaswamy.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,7 +18,9 @@ public class Bakery {
     @Column(nullable = false, name = "product_name")
     private String name;
 
-    private String product_description;
+
+    @Column(name = "product_description")
+    private String productDescription;
 
     @Enumerated(EnumType.STRING)
     private ProductType type;
@@ -30,30 +34,27 @@ public class Bakery {
     @Column(nullable = false)
     private boolean isAvailable;
 
-    // Default constructor (required by JPA)
-    public Bakery() {
-    }
+    /**
+     * ManyToMany bidirectional relationship
+     * Bakery is the inverse side
+     * CustomerOrder is the owning side
+     */
+    @ManyToMany(mappedBy = "bakeryItems")
+    private List<CustomerOrder> customerOrders = new ArrayList<>();
 
-    // Constructor that accepts 'name', 'product_description', and 'ProductType'
-    public Bakery(String name, String product_description, ProductType type, float price, int quantity, boolean isAvailable) {
+
+    public Bakery() {}
+
+    public Bakery(String name, String productDescription, ProductType type, float price, int quantity, boolean isAvailable) {
         this.name = name;
-        this.product_description = product_description;
+        this.productDescription = productDescription;
         this.type = type;
         this.price = price;
         this.quantity = quantity;
         this.isAvailable = isAvailable;
     }
 
-    // Getter and Setter for 'name'
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Getter and Setter for 'id'
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -62,16 +63,22 @@ public class Bakery {
         this.id = id;
     }
 
-    // Getter and Setter for 'product_description'
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getProductDescription() {
-        return product_description;
+        return productDescription;
     }
 
-    public void setProductDescription(String product_description) {
-        this.product_description = product_description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    // Getter and Setter for 'ProductType'
     public ProductType getType() {
         return type;
     }
@@ -104,31 +111,42 @@ public class Bakery {
         isAvailable = available;
     }
 
-    // Equals and HashCode
+    public List<CustomerOrder> getCustomerOrders() {
+        return customerOrders;
+    }
+
+    public void setCustomerOrders(List<CustomerOrder> customerOrders) {
+        this.customerOrders = customerOrders;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Bakery)) return false;
         Bakery bakery = (Bakery) o;
-        return id != null && id.equals(bakery.getId());
+        if(this.id == null || bakery.id == null) {
+            return false;
+        }
+        return Objects.equals(getId(), bakery.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
-    // toString
     @Override
     public String toString() {
         return "Bakery{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", product_description='" + product_description + '\'' +
+                ", productDescription='" + productDescription + '\'' +
                 ", type=" + type +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", isAvailable=" + isAvailable +
+                ", customerOrders=" + customerOrders.size() + " orders" +
                 '}';
     }
+
 }
