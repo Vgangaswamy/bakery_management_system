@@ -1,6 +1,10 @@
 package edu.iit.sat.itmd4515.vgangaswamy.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Objects;
 
 @Entity
@@ -10,25 +14,34 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Column(nullable = false)
+    private String name;
+
+    @Min(0)
     private int stockLevel;
+    @Min(0)
     private int minimumStockLevel;
 
-    /**
-     * OneToOne unidirectional relationship
-     * Inventory is the owning (only) side
-     */
-    @OneToOne(optional = true)
+    @OneToOne(cascade = CascadeType.ALL)
     private Ingredient ingredient;
 
-    // Constructors
-    public Inventory() {
-    }
+
 
     public Inventory(int stockLevel, int minimumStockLevel, Ingredient ingredient) {
         this.stockLevel = stockLevel;
         this.minimumStockLevel = minimumStockLevel;
         this.ingredient = ingredient;
     }
+    public Inventory(String flourStock, int stockLevel, int minimumStockLevel, Ingredient ingredient) {
+        this.name = flourStock; // Set the name here
+        this.stockLevel = stockLevel;
+        this.minimumStockLevel = minimumStockLevel;
+        this.ingredient = ingredient;
+    }
+
+
+    public Inventory() {}
 
     // Getters and Setters
     public Long getId() {
@@ -61,6 +74,17 @@ public class Inventory {
 
     public void setIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
+        if (ingredient != null) {
+            ingredient.setInventory(this); // Ensure bidirectional relationship is maintained.
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -83,6 +107,7 @@ public class Inventory {
     public String toString() {
         return "Inventory{" +
                 "id=" + id +
+                ", name='" + name + '\'' +  // Corrected: added quotes around name
                 ", stockLevel=" + stockLevel +
                 ", minimumStockLevel=" + minimumStockLevel +
                 ", ingredient=" + (ingredient != null ? ingredient.getName() : "null") +

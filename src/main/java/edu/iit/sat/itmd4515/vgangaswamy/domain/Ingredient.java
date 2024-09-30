@@ -6,10 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
-/**
- * The Ingredient class represents an ingredient used in bakery products.
- * It includes attributes such as the ingredient's ID, name, and quantity.
- */
 @Entity
 public class Ingredient {
 
@@ -20,72 +16,48 @@ public class Ingredient {
     @NotBlank
     private String name;
 
-    @Min(1)
+    @Min(0)
     private int quantity;
 
-    /**
-     * OneToOne unidirectional relationship
-     * Ingredient is the owning (only) side
-     */
     @OneToOne(mappedBy = "ingredient")
     private Inventory inventory;
 
-    /**
-     * Default constructor (required by JPA).
-     */
     public Ingredient() {
+        // Default constructor for JPA
     }
 
-    /**
-     * Gets the ID of the ingredient.
-     *
-     * @return the ingredient's ID
-     */
+    public Ingredient(String name, int quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public Ingredient(String name) {
+        this.name = name;
+        this.quantity = 0;  // Set a default quantity if needed
+    }
+
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
 
-    /**
-     * Sets the ID of the ingredient.
-     *
-     * @param id the ingredient's ID to set
-     */
     public void setId(Long id) {
         this.id = id;
     }
 
-    /**
-     * Gets the name of the ingredient.
-     *
-     * @return the ingredient's name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Sets the name of the ingredient.
-     *
-     * @param name the ingredient's name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Gets the quantity of the ingredient.
-     *
-     * @return the ingredient's quantity
-     */
     public int getQuantity() {
         return quantity;
     }
 
-    /**
-     * Sets the quantity of the ingredient.
-     *
-     * @param quantity the ingredient's quantity to set
-     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -114,11 +86,6 @@ public class Ingredient {
         return Objects.hash(getId());
     }
 
-    /**
-     * Returns a string representation of the Ingredient object.
-     *
-     * @return a string containing the ingredient details
-     */
     @Override
     public String toString() {
         return "Ingredient{" +
