@@ -1,4 +1,4 @@
-package config;
+package edu.iit.sat.itmd4515.vgangaswamy.config;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 

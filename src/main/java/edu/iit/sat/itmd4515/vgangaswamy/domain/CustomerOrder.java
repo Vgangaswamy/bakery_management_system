@@ -15,6 +15,7 @@ import java.util.Objects;
  * It contains information such as the order ID, date, and total price.
  */
 @Entity
+@NamedQuery(name = "CustomerOrder.readAll", query = "select o from CustomerOrder o")
 public class CustomerOrder {
 
     @Id

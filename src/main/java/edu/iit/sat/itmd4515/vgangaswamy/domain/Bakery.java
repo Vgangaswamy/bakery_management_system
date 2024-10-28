@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NamedQuery(name = "Bakery.readAll", query = "select b from Bakery b")
 public class Bakery {
 
     @Id
@@ -117,6 +118,23 @@ public class Bakery {
 
     public void setCustomerOrders(List<CustomerOrder> customerOrders) {
         this.customerOrders = customerOrders;
+    }
+
+    public void addCustomerOrders(CustomerOrder customerOrders) {
+        if(!this.customerOrders.contains(customerOrders)) {
+            this.customerOrders.add(customerOrders);
+        }
+        if(!customerOrders.getBakeryItems().contains(this))  {
+            customerOrders.getBakeryItems().add(this);
+        }
+    }
+    public void removeCustomerOrders(CustomerOrder customerOrders) {
+        if(!this.customerOrders.contains(customerOrders)) {
+            this.customerOrders.remove(customerOrders);
+        }
+        if(!customerOrders.getBakeryItems().contains(this))  {
+            customerOrders.getBakeryItems().remove(this);
+        }
     }
 
     @Override

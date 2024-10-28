@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
+@NamedQuery(name = "Ingredient.readAll", query = "select i from Ingredient i")
 public class Ingredient {
 
     @Id
@@ -67,7 +68,9 @@ public class Ingredient {
     }
 
     public void setInventory(Inventory inventory) {
+
         this.inventory = inventory;
+        inventory.setIngredient(this);
     }
 
     @Override

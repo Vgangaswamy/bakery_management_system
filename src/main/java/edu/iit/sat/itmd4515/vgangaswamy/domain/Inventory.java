@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@NamedQuery(name = "Inventory.readAll", query = "select v from Inventory v")
 public class Inventory {
 
     @Id
@@ -27,7 +28,6 @@ public class Inventory {
     private Ingredient ingredient;
 
 
-
     public Inventory(int stockLevel, int minimumStockLevel, Ingredient ingredient) {
         this.stockLevel = stockLevel;
         this.minimumStockLevel = minimumStockLevel;
@@ -40,6 +40,11 @@ public class Inventory {
         this.ingredient = ingredient;
     }
 
+    public Inventory( String name, int stockLevel, int minimumStockLevel) {
+        this.name = name;
+        this.stockLevel = stockLevel;
+        this.minimumStockLevel = minimumStockLevel;
+    }
 
     public Inventory() {}
 
@@ -74,9 +79,7 @@ public class Inventory {
 
     public void setIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
-        if (ingredient != null) {
-            ingredient.setInventory(this); // Ensure bidirectional relationship is maintained.
-        }
+
     }
 
     public String getName() {
@@ -107,7 +110,7 @@ public class Inventory {
     public String toString() {
         return "Inventory{" +
                 "id=" + id +
-                ", name='" + name + '\'' +  // Corrected: added quotes around name
+                ", name='" + name + '\'' +
                 ", stockLevel=" + stockLevel +
                 ", minimumStockLevel=" + minimumStockLevel +
                 ", ingredient=" + (ingredient != null ? ingredient.getName() : "null") +

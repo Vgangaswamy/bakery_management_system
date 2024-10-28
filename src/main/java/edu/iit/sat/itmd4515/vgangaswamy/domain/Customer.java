@@ -12,6 +12,7 @@ import java.util.Objects;
  * It includes attributes such as the customer's ID, name, email, and phone number.
  */
 @Entity
+@NamedQuery(name = "Customer.readAll", query = "select c from Customer c")
 public class Customer {
 
     @Id
@@ -38,6 +39,12 @@ public class Customer {
      * Default constructor (required by JPA).
      */
     public Customer() {
+    }
+
+    public Customer(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     /**
