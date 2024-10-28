@@ -4,13 +4,25 @@
 
 
 <h:head>
-    <title>Welcome to My JSF Page</title>
+    <title>Welcome</title>
 </h:head>
 
 <h:body>
-    <h:panelGroup layout="block">
-        <h:outputLabel value="Bakery Name" for="bakeryName" />
-        <h:inputText id="bakeryName" />
-    </h:panelGroup>
+    <h:form>
+        <p>
+        <h:panelGroup layout="block">
+            <h:outputLabel value="Bakery Product Name " for="bakeryProductName" />
+            <h:inputText id="bakeryProductName" value="#{bakeryController.bakery.name}"/>
+        </h:panelGroup>
+        </p>
+        <p>
+        <h:panelGroup layout="block">
+            <h:outputLabel value="Product " for="productQuantity" />
+            <h:inputText id="productQuantity" value="#{bakeryController.bakery.quantity}" />
+
+        </h:panelGroup>
+        </p>
+        <h:commandButton value="Create a product" action="#{bakeryController.saveBakeryProduct()}"/>
+    </h:form>
 </h:body>
 </html>
