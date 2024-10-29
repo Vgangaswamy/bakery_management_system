@@ -19,17 +19,17 @@ public class Bakery {
     @Column(nullable = false, name = "product_name")
     private String name;
 
-
     @Column(name = "product_description")
+    @NotBlank
     private String productDescription;
 
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
-    @Min(0)
+    @Min(1)
     private float price;
 
-    @Min(0)
+    @Min(1)
     private int quantity;
 
     @Column(nullable = false)

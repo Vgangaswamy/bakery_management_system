@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 
 
 <h:head>
@@ -11,16 +11,36 @@
     <h:form>
         <p>
         <h:panelGroup layout="block">
-            <h:outputLabel value="Bakery Product Name " for="bakeryProductName" />
+            <h:outputLabel value="Bakery Product Name: " for="bakeryProductName" />
             <h:inputText id="bakeryProductName" value="#{bakeryController.bakery.name}"/>
+            <h:message for="bakeryProductName" errorStyle="color: darkred" />
         </h:panelGroup>
         </p>
         <p>
         <h:panelGroup layout="block">
-            <h:outputLabel value="Product " for="productQuantity" />
+            <h:outputLabel value="Quantity: " for="productQuantity" />
             <h:inputText id="productQuantity" value="#{bakeryController.bakery.quantity}" />
-
+            <h:message for="productQuantity" errorStyle="color: darkred"/>
         </h:panelGroup>
+        </p>
+        <p>
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Product Type: " for="productType"/>
+                <h:selectOneMenu id="productType" value="#{bakeryController.bakery.type}">
+                    <f:selectItems value="#{bakeryService.allProductTypes}"
+                                   var="productType"
+                                   itemLabel="#{productType}"
+                                   itemValue="#{productType}"/>
+                </h:selectOneMenu>
+                <h:message for="productType" errorStyle="color: darkred" />
+            </h:panelGroup>
+        </p>
+        <p>
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Product Description: " for="productDesc"/>
+                <h:inputText id="productDesc" value="#{bakeryController.bakery.productDescription}"/>
+                <h:message for="productDesc" errorStyle="color: darkred"/>
+            </h:panelGroup>
         </p>
         <h:commandButton value="Create a product" action="#{bakeryController.saveBakeryProduct()}"/>
     </h:form>
