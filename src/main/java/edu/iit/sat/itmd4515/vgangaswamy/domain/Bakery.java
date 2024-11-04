@@ -26,10 +26,10 @@ public class Bakery {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
-    @Min(1)
+    @Min(0)
     private float price;
 
-    @Min(1)
+    @Min(0)
     private int quantity;
 
     @Column(nullable = false)

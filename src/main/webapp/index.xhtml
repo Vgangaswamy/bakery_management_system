@@ -10,18 +10,18 @@
 <h:body>
     <h:form>
         <p>
-        <h:panelGroup layout="block">
-            <h:outputLabel value="Bakery Product Name: " for="bakeryProductName" />
-            <h:inputText id="bakeryProductName" value="#{bakeryController.bakery.name}"/>
-            <h:message for="bakeryProductName" errorStyle="color: darkred" />
-        </h:panelGroup>
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Bakery Product Name: " for="bakeryProductName" />
+                <h:inputText id="bakeryProductName" value="#{bakeryController.bakery.name}"/>
+                <h:message for="bakeryProductName" errorStyle="color: darkred" />
+            </h:panelGroup>
         </p>
         <p>
-        <h:panelGroup layout="block">
-            <h:outputLabel value="Quantity: " for="productQuantity" />
-            <h:inputText id="productQuantity" value="#{bakeryController.bakery.quantity}" />
-            <h:message for="productQuantity" errorStyle="color: darkred"/>
-        </h:panelGroup>
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Quantity: " for="productQuantity" />
+                <h:inputText id="productQuantity" value="#{bakeryController.bakery.quantity}" />
+                <h:message for="productQuantity" errorStyle="color: darkred"/>
+            </h:panelGroup>
         </p>
         <p>
             <h:panelGroup layout="block">
@@ -42,6 +42,16 @@
                 <h:message for="productDesc" errorStyle="color: darkred"/>
             </h:panelGroup>
         </p>
+
+        <!-- Added the isAvailable checkbox input for the availability status of the product -->
+        <p>
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Available: " for="isAvailable"/>
+                <h:selectBooleanCheckbox id="isAvailable" value="#{bakeryController.bakery.available}"/>
+                <h:message for="isAvailable" errorStyle="color: darkred"/>
+            </h:panelGroup>
+        </p>
+
         <h:commandButton value="Create a product" action="#{bakeryController.saveBakeryProduct()}"/>
     </h:form>
 </h:body>
