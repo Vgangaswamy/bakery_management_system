@@ -10,7 +10,6 @@ import java.util.Objects;
 @Entity
 @Table(name="SEC_USER")
 @NamedQuery(name = "User.findAll", query = "select u from User u")
-
 public class User {
 
     @Id
@@ -23,7 +22,15 @@ public class User {
     private List<Group> groups = new ArrayList<>();
 
     public User() {
+    }
 
+    public void addGroup(Group g){
+        this.groups.add(g);
+        g.getUsers().add(this);
+    }
+    public void removeGroup(Group g){
+        this.groups.remove(g);
+        g.getUsers().remove(this);
     }
     public User(String username, String password) {
         this.username = username;

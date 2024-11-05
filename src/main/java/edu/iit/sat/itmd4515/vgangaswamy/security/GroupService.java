@@ -7,7 +7,7 @@ import java.util.List;
 
 @Stateless
 public class GroupService extends AbstractService<Group> {
-    protected GroupService() {
+    public GroupService() {
         super(Group.class);
     }
 

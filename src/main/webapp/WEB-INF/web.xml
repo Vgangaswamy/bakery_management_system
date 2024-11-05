@@ -15,5 +15,35 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin Only Content</web-resource-name>
+            <url-pattern> </url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Bakery Only Content</web-resource-name>
+            <url-pattern> </url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>BAKERY_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Owner Only Content</web-resource-name>
+            <url-pattern> </url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>OWNER_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
 
 </web-app>

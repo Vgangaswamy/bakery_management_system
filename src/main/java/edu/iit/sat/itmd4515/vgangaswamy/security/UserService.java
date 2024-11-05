@@ -7,7 +7,7 @@ import java.util.List;
 
 @Stateless
 public class UserService extends AbstractService<User> {
-    protected UserService() {
+    public UserService() {
         super(User.class);
     }
 

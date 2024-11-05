@@ -3,6 +3,7 @@ package edu.iit.sat.itmd4515.vgangaswamy.service;
 import edu.iit.sat.itmd4515.vgangaswamy.domain.*;
 import edu.iit.sat.itmd4515.vgangaswamy.security.Group;
 import edu.iit.sat.itmd4515.vgangaswamy.security.GroupService;
+import edu.iit.sat.itmd4515.vgangaswamy.security.User;
 import edu.iit.sat.itmd4515.vgangaswamy.security.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
@@ -42,14 +43,46 @@ public class StartupServiceInitDB {
 
     public StartupServiceInitDB() {
     }
+
     @PostConstruct
     private void postConstruct(){
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
 
-        Group ownerGroup = new Group();
-        Group bakeryGroup = new Group();
-        Group adminGroup = new Group();
+        Group ownerGroup = new Group("OWNER_GROUP","Group of bakery product owners");
+        Group bakeryGroup = new Group("BAKERY_GROUP","Group of Bakeries");
+        Group adminGroup = new Group("ADMIN_GROUP","Group of super admins ");
+        groupSvc.create(ownerGroup);
+        groupSvc.create(bakeryGroup);
+        groupSvc.create(adminGroup);
 
+        User bak1 = new User("bakery1", "bakery1");
+        bak1.addGroup(bakeryGroup);
+        bak1.addGroup(adminGroup);
+
+        User bak2 = new User("bakery2", "bakery2");
+        bak2.addGroup(bakeryGroup);
+        bak2.addGroup(ownerGroup);
+
+
+        User bak3 = new User("bakery3", "bakery3");
+        bak3.addGroup(bakeryGroup);
+
+
+        User owner1 = new User("owner1", "owner1");
+        owner1.addGroup(ownerGroup);
+        User owner2 = new User("owner2", "owner2");
+        owner2 .addGroup(ownerGroup);
+
+
+        User admin = new User("admin","admin");
+        admin.addGroup(adminGroup);
+
+        userSvc.create(bak1);
+        userSvc.create(bak2);
+        userSvc.create(bak3);
+        userSvc.create(owner1);
+        userSvc.create(owner2);
+        userSvc.create(admin);
 
 
         Customer c1 = new Customer("nithish", "nithish@mail.com", "3126958456");

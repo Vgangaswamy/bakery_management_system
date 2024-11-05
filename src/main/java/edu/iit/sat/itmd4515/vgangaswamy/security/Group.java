@@ -9,12 +9,20 @@ import java.util.Objects;
 @Entity
 @Table(name="SEC_GROUP")
 @NamedQuery(name = "Group.findAll", query = "select g from Group g")
-
 public class Group {
 
     @Id
     private String groupName;
     private String groupDesc;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     @ManyToMany(mappedBy = "groups")
     private List<User> users = new ArrayList<>();
 
