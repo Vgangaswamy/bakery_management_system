@@ -1,6 +1,9 @@
 package edu.iit.sat.itmd4515.vgangaswamy.service;
 
 import edu.iit.sat.itmd4515.vgangaswamy.domain.*;
+import edu.iit.sat.itmd4515.vgangaswamy.security.Group;
+import edu.iit.sat.itmd4515.vgangaswamy.security.GroupService;
+import edu.iit.sat.itmd4515.vgangaswamy.security.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
@@ -31,12 +34,23 @@ public class StartupServiceInitDB {
     @EJB
     CustomerOrderService cusOrSVC;
 
+    @EJB
+    UserService userSvc;
+
+    @EJB
+    GroupService groupSvc;
 
     public StartupServiceInitDB() {
     }
     @PostConstruct
     private void postConstruct(){
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
+
+        Group ownerGroup = new Group();
+        Group bakeryGroup = new Group();
+        Group adminGroup = new Group();
+
+
 
         Customer c1 = new Customer("nithish", "nithish@mail.com", "3126958456");
         Customer c2 = new Customer("vidya","vidya@mail.com", "3125958456");

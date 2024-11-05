@@ -9,7 +9,7 @@
     </context-param>
 
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>welcome.xhtml</welcome-file>
     </welcome-file-list>
 
     <session-config>

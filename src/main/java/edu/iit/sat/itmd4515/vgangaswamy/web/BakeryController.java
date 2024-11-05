@@ -33,7 +33,7 @@ public class BakeryController {
         LOG.info("Inside BakeryController.saveBakeryProduct() before call to service" + bakery.toString());
         bakSvc.create(bakery);
         LOG.info("Inside BakeryController.saveBakeryProduct() after call to service" + bakery.toString());
-        return "confirmation.xhtml";
+        return "createProductConfirmation.xhtml";
     }
 
     public Bakery getBakery() {
