@@ -1,5 +1,6 @@
 package edu.iit.sat.itmd4515.vgangaswamy.domain;
 
+import edu.iit.sat.itmd4515.vgangaswamy.security.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -34,6 +35,18 @@ public class Customer {
      */
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CustomerOrder> orders = new ArrayList<>();
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
 
     /**
      * Default constructor (required by JPA).

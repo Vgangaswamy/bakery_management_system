@@ -1,5 +1,6 @@
 package edu.iit.sat.itmd4515.vgangaswamy.domain;
 
+import edu.iit.sat.itmd4515.vgangaswamy.security.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -45,6 +46,18 @@ public class Bakery {
 
 
     public Bakery() {}
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
 
     public Bakery(String name, String productDescription, ProductType type, float price, int quantity, boolean isAvailable) {
         this.name = name;
