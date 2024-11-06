@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="SEC_USER")
+@EntityListeners(UserPasswordHash.class)
 @NamedQuery(name = "User.findAll", query = "select u from User u")
 public class User {
 

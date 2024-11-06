@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE payara-web-app PUBLIC "-//Payara//DTD Payara Application Server 4 Servlet 3.0//EN" "https://www.payara.fish/xml/ns/payara-web-app_4_0.dtd">
+<payara-web-app xmlns="https://www.payara.fish/xml/ns/payara-web-app"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="https://www.payara.fish/xml/ns/payara-web-app https://www.payara.fish/xml/ns/payara-web-app_4_0.xsd"
+                version="4.0">
+
+    <security-role-mapping>
+        <role-name>ADMIN_ROLE</role-name>
+        <group-name>ADMIN_GROUP</group-name>
+    </security-role-mapping>
+
+    <security-role-mapping>
+        <role-name>BAKERY_ROLE</role-name>
+        <group-name>BAKERY_GROUP</group-name>
+    </security-role-mapping>
+
+    <security-role-mapping>
+        <role-name>OWNER_ROLE</role-name>
+        <group-name>OWNER_GROUP</group-name>
+    </security-role-mapping>
+
+</payara-web-app>

@@ -1,10 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="jakarta.faces.facelets"
-                template="/WEB-INF/templates/template.xhtml">
+                template="./WEB-INF/templates/authNtemplate.xhtml"
+                xmlns:h="jakarta.faces.html">
 
+   <ui:define name="title">
+      Bakery Management
+   </ui:define>
 
-   <ui:define name="title">Bakery Management</ui:define>
+   <ui:define name="content">
+      Welcome to Bakery Management System, #{loginController.authenticatedUsername}
 
-   <ui:define name="content">Welcome to the Bakery Management System</ui:define>
+      <h:form>
+         <ul>
+            <li><h:link outcome="welcome.xhtml">Home</h:link></li>
+            <li><h:link outcome="admin/welcome.xhtml">Admin Access</h:link></li>
+            <li><h:link outcome="owner/welcome.xhtml">Owner Access</h:link></li>
+            <li><h:link outcome="Bakery/welcome.xhtml">Bakery Access</h:link></li>
+            <li><h:commandLink action="#{loginController.doLogout()}" value="Logout"/></li>
+         </ul>
+      </h:form>
+
+   </ui:define>
 
 </ui:composition>
