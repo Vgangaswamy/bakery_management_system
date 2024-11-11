@@ -15,3 +15,14 @@ The following screenshot provides Username and Password
 
 
 
+[README-lab8.md](README-lab8.md)
+![admin.png](Screenshots%2Fadmin.png)
+![admin success.png](Screenshots%2Fadmin%20success.png)
+![bakery1.png](Screenshots%2Fbakery1.png)
+![bakery1 success.png](Screenshots%2Fbakery1%20success.png)
+![bakery1 success 2.png](Screenshots%2Fbakery1%20success%202.png)
+![Hashed PASSWORD.png](Screenshots%2FHashed%20PASSWORD.png)
+![OnetoOne.png](Screenshots%2FOnetoOne.png)
+![owner success.png](Screenshots%2Fowner%20success.png)
+![owner1.png](Screenshots%2Fowner1.png)
+![Username and Password.png](Screenshots%2FUsername%20and%20Password.png)

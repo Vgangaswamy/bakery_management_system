@@ -116,6 +116,12 @@
             <artifactId>jakarta.faces</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.4.3.Final</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

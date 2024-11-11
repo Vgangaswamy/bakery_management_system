@@ -90,6 +90,7 @@ public class StartupServiceInitDB {
         Customer c2 = new Customer("vidya","vidya@mail.com", "3125958456");
         c2.setUser(owner2);
         Customer c3 = new Customer("harsh", "harsh@mail.com", "3166958456");
+        c3.setUser(bak3);
 
         cusSvc.create(c1);
         cusSvc.create(c2);
@@ -98,9 +99,9 @@ public class StartupServiceInitDB {
         Bakery b1 = new Bakery("cupcake","cake in a shape of cup", ProductType.CAKES,99,100,true);
         b1.setUser(owner1);
         Bakery b2 = new Bakery("fruitcake","cake made of fruits", ProductType.CAKES,56,100,true);
-        b2.setUser(owner2
-        );
+        b2.setUser(owner2);
         Bakery b3 = new Bakery("berrycake","cake made of berries", ProductType.CAKES,69,100,true);
+        b3.setUser(bak1);
 
         bakSVC.create(b1);
         bakSVC.create(b2);
