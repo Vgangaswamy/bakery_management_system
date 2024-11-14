@@ -17,6 +17,14 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errors/success.xhtml</location>
+    </error-page>
+
+    <error-page>
+        <location>/errors/error.xhtml</location>
+    </error-page>
 
     <security-role>
         <role-name>ADMIN_ROLE</role-name>
@@ -57,5 +65,17 @@
             <role-name>OWNER_ROLE</role-name>
         </auth-constraint>
     </security-constraint>
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

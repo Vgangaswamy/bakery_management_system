@@ -1,35 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="jakarta.faces.facelets" xmlns:h="http://java.sun.com/jsf/html"
-                template="/WEB-INF/templates/template.xhtml">
+                xmlns:ui="jakarta.faces.facelets"
+                template="/WEB-INF/templates/template.xhtml"
+                xmlns:h="jakarta.faces.html">
 
+    <ui:define name="title">
+        Login Page
+    </ui:define>
 
-<ui:define name="title">Login Page</ui:define>
+    <ui:define name="content">
+        Login Page
+        <h:form>
+            <p>
+                <h:panelGrid layout="block">
+                    <h:outputLabel value="Username: " for="userName" />
+                    <h:inputText binding="#{uname}" id="userName"
+                                 styleClass="#{uname.valid ? 'form-control is-valid' : 'form-control is-invalid'}"
+                                 value="#{loginController.user.username}"/>
+                    <h:message for="userName" errorStyle="color: red" />
+                </h:panelGrid>
+            </p>
+            <p>
+                <h:panelGrid layout="block">
+                    <h:outputLabel value="Password:" for="password" />
+                    <h:inputSecret binding="#{pswd}" id="password"
+                                   styleClass="#{pswd.valid ? 'form-control is-valid' : 'form-control is-invalid'}"
+                                   value="#{loginController.user.password}"/>
+                    <h:message for="password" errorStyle="color: red" />
+                </h:panelGrid>
+            </p>
 
-<ui:define name="content">
-    Login Content
+            <h:commandButton value="Login" action="#{loginController.doLogin()}"/>
 
-    <h:form>
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Username" for="userName" />
-                <h:inputText id="userName" value="#{loginController.user.username}"/>
-                <h:message for="userName" errorStyle="color: darkred" />
-            </h:panelGroup>
-        </p>
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Password" for="password" />
-                <h:inputSecret id="password" value="#{loginController.user.password}"/>
-                <h:message for="password" errorStyle="color: darkred" />
-            </h:panelGroup>
-        </p>
-    <h:commandButton value="Login" action="#{loginController.doLogin()}"/>
+        </h:form>
 
-    </h:form>
-
-</ui:define>
+    </ui:define>
 
 </ui:composition>

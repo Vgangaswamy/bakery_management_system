@@ -1,17 +1,69 @@
-<!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
       xmlns:h="jakarta.faces.html"
-      xmlns:ui="jakarta.faces.facelets">
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
 <h:head>
-   <title><ui:insert name="title">DEFAULT TITLE</ui:insert></title>
-   <meta charset="utf-8"/>
+   <title><ui:insert name="title">DEFAULT AUTHN TITLE</ui:insert></title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXhW+ALEwIH" crossorigin="anonymous"/>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+   <h:outputStylesheet library="css" name="starter-template.css" />
 </h:head>
 
 <h:body>
-   <h1><ui:insert name="content">DEFAULT CONTENT</ui:insert></h1>
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="#">Bakery Management System</a>
+         <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
+            <span class='navbar-toggler-icon'></span>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+               <li class="nav-item">
+                  <h:link class="nav-link" outcome="/welcome.xhtml">Home</h:link>
+               </li>
+
+               <ui:fragment rendered="#{loginController.admin}">
+                  <li class="nav-item">
+                     <h:link styleClass="#{fn:startsWith(view.viewId, '/admin/welcome.xhtml') ? 'nav-link active' : 'nav-link'}" outcome="/admin/welcome.xhtml">Admin Access</h:link>
+                  </li>
+               </ui:fragment>
+
+               <ui:fragment rendered="#{loginController.owner}">
+                  <li class="nav-item">
+                     <h:link class="nav-link" outcome="/owner/welcome.xhtml">Owner Access</h:link>
+                  </li>
+               </ui:fragment>
+
+               <ui:fragment rendered="#{loginController.bakery}">
+                  <li class="nav-item">
+                     <h:link class="nav-link" outcome="/Bakery/welcome.xhtml">Bakery Access</h:link>
+                  </li>
+               </ui:fragment>
+
+
+            </ul>
+
+            <h:form class="d-flex">
+               <h:commandLink class="btn btn-outline-success me-2" action="#{loginController.doLogout()}" value="Logout" immediate="true"/>
+            </h:form>
+         </div>
+      </div>
+   </nav>
+   <h:panelGroup layout="block"/>
+      <main class="container">
+         <div class="bg-body-tertiary p-5 rounded">
+            <h1><ui:insert name="title">DEFAULT AUTHN TITLE</ui:insert></h1>
+            <p class="lead"><ui:insert name="content">DEFAULT AUTHN CONTENT</ui:insert></p>
+         </div>
+      </main>
+   <h:panelGroup/>
+
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </h:body>
 </html>

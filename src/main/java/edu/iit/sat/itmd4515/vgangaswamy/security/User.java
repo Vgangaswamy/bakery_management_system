@@ -1,6 +1,7 @@
 package edu.iit.sat.itmd4515.vgangaswamy.security;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,9 @@ import java.util.Objects;
 public class User {
 
     @Id
+    @NotBlank(message = "Must enter a username")
     private String username;
+    @NotBlank(message = "Must enter a password")
     private String password;
     @ManyToMany
     @JoinTable(name = "SEC_USER_GROUPS",

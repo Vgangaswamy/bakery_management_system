@@ -6,4 +6,11 @@
     <lifecycle>
         <phase-listener>edu.iit.sat.itmd4515.vgangaswamy.web.JSFPhaseListener</phase-listener>
     </lifecycle>
+
+    <application>
+        <resource-bundle>
+            <base-name>com.example.resources</base-name>
+            <var>resources</var>
+        </resource-bundle>
+    </application>
 </faces-config>

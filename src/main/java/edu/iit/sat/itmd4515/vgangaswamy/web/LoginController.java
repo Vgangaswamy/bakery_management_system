@@ -36,7 +36,26 @@ public class LoginController {
         LOG.info("Inside LoginController.postConstruct()");
         user = new User();
     }
- 
+
+    public boolean isAdmin(){
+        boolean isAdmin = securityContext.isCallerInRole("ADMIN_ROLE");
+        LOG.info("User isAdmin: " + isAdmin);
+        return isAdmin;
+    }
+
+    public boolean isBakery(){
+        boolean isBakery = securityContext.isCallerInRole("BAKERY_ROLE");
+        LOG.info("User isBakery: " + isBakery);
+        return isBakery;
+    }
+
+    public boolean isOwner(){
+        boolean isOwner = securityContext.isCallerInRole("OWNER_ROLE");
+        LOG.info("User isOwner: " + isOwner);
+        return isOwner;
+    }
+
+
     //Helper methods
     public String getAuthenticatedUsername(){
         return securityContext.getCallerPrincipal().getName();
@@ -66,16 +85,18 @@ public class LoginController {
     }
 
     public String doLogout(){
-        LOG.info("LoginController.doLogout() ");
+        LOG.info("LoginController.doLogout()");
         HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
         try {
             request.logout();
+            // Invalidate session
+            facesContext.getExternalContext().invalidateSession();
         } catch (ServletException e) {
             throw new RuntimeException(e);
         }
-
-        return "/login.xhtml";
+        return "/login.xhtml?faces-redirect=true";
     }
+
 
     public User getUser() {
         return user;

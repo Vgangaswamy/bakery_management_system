@@ -13,16 +13,6 @@
    <ui:define name="content">
       Welcome to Bakery Management System, #{loginController.authenticatedUsername}
 
-      <h:form>
-         <ul>
-            <li><h:link outcome="welcome.xhtml">Home</h:link></li>
-            <li><h:link outcome="admin/welcome.xhtml">Admin Access</h:link></li>
-            <li><h:link outcome="owner/welcome.xhtml">Owner Access</h:link></li>
-            <li><h:link outcome="Bakery/welcome.xhtml">Bakery Access</h:link></li>
-            <li><h:commandLink action="#{loginController.doLogout()}" value="Logout"/></li>
-         </ul>
-      </h:form>
-
    </ui:define>
 
 </ui:composition>
