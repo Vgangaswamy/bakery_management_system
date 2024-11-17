@@ -49,10 +49,10 @@ public class LoginController {
         return isBakery;
     }
 
-    public boolean isOwner(){
-        boolean isOwner = securityContext.isCallerInRole("OWNER_ROLE");
-        LOG.info("User isOwner: " + isOwner);
-        return isOwner;
+    public boolean isCustomer(){
+        boolean isCustomer = securityContext.isCallerInRole("CUSTOMER_ROLE");
+        LOG.info("User isCustomer: " + isCustomer);
+        return isCustomer;
     }
 
 

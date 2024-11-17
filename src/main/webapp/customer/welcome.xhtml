@@ -3,15 +3,14 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="jakarta.faces.facelets"
-                xmlns:h="jakarta.faces.html"
                 xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
                 template="../WEB-INF/templates/authNtemplate.xhtml">
 
-   <ui:define name="title">Bakery Management Admin Section</ui:define>
 
-   <ui:define name="content">
-      Administrative content. Your admin Username is #{loginController.authenticatedUsername}
+   <ui:define name="title">Bakery Management CUSTOMER Section</ui:define>
 
+   <ui:define name="content">CUSTOMER content. Your CUSTOMER Username is #{loginController.authenticatedUsername}
       <h:dataTable
               styleClass="table table-striped table-hover"
               value="#{bakeryService.readAll()}" var="bakery">
@@ -36,12 +35,7 @@
             <h:outputText value="#{bakery.quantity}"/>
          </h:column>
 
-         <h:column>
-            <f:facet name="header">Is the product available?</f:facet>
-            <h:outputText value="#{bakery.availabilityStatus}" />
-         </h:column>
-
       </h:dataTable>
-
    </ui:define>
+
 </ui:composition>

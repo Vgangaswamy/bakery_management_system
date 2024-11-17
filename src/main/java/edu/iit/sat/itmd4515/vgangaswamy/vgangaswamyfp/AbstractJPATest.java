@@ -21,7 +21,7 @@ public class AbstractJPATest {
     }
 
     @BeforeEach
-    //Before Each I am creating a new "brioche" entity and logging it's creation
+    //Before Each I am creating a new "brioche" entity and logging its creation
     public void beforeEach() {
         em = emf.createEntityManager();
         tx = em.getTransaction();

@@ -5,7 +5,7 @@ import jakarta.security.enterprise.authentication.mechanism.http.CustomFormAuthe
 import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 
-@DeclareRoles({"ADMIN_ROLE","BAKERY_ROLE","OWNER_ROLE"})
+@DeclareRoles({"ADMIN_ROLE","BAKERY_ROLE","CUSTOMER_ROLE"})
 @CustomFormAuthenticationMechanismDefinition(
         loginToContinue = @LoginToContinue(
                 loginPage = "/login.xhtml",

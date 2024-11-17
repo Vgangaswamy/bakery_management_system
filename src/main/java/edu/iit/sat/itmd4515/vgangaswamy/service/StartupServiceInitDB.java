@@ -48,10 +48,10 @@ public class StartupServiceInitDB {
     private void postConstruct(){
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
 
-        Group ownerGroup = new Group("OWNER_GROUP","Group of bakery product owners");
+        Group customerGroup = new Group("CUSTOMER_GROUP","Group of bakery product customers");
         Group bakeryGroup = new Group("BAKERY_GROUP","Group of Bakeries");
         Group adminGroup = new Group("ADMIN_GROUP","Group of super admins ");
-        groupSvc.create(ownerGroup);
+        groupSvc.create(customerGroup);
         groupSvc.create(bakeryGroup);
         groupSvc.create(adminGroup);
 
@@ -61,17 +61,17 @@ public class StartupServiceInitDB {
 
         User bak2 = new User("bakery2", "bakery2");
         bak2.addGroup(bakeryGroup);
-        bak2.addGroup(ownerGroup);
+        bak2.addGroup(customerGroup);
 
 
         User bak3 = new User("bakery3", "bakery3");
         bak3.addGroup(bakeryGroup);
 
 
-        User owner1 = new User("owner1", "owner1");
-        owner1.addGroup(ownerGroup);
-        User owner2 = new User("owner2", "owner2");
-        owner2 .addGroup(ownerGroup);
+        User cus1 = new User("cus1", "cus1");
+        cus1.addGroup(customerGroup);
+        User cus2 = new User("cus2", "cus2");
+        cus2 .addGroup(customerGroup);
 
 
         User admin = new User("admin","admin");
@@ -80,15 +80,15 @@ public class StartupServiceInitDB {
         userSvc.create(bak1);
         userSvc.create(bak2);
         userSvc.create(bak3);
-        userSvc.create(owner1);
-        userSvc.create(owner2);
+        userSvc.create(cus1);
+        userSvc.create(cus2);
         userSvc.create(admin);
 
 
         Customer c1 = new Customer("nithish", "nithish@mail.com", "3126958456");
-        c1.setUser(owner1);
+        c1.setUser(cus1);
         Customer c2 = new Customer("vidya","vidya@mail.com", "3125958456");
-        c2.setUser(owner2);
+        c2.setUser(cus2);
         Customer c3 = new Customer("harsh", "harsh@mail.com", "3166958456");
         c3.setUser(bak3);
 
@@ -97,9 +97,9 @@ public class StartupServiceInitDB {
         cusSvc.create(c3);
 
         Bakery b1 = new Bakery("cupcake","cake in a shape of cup", ProductType.CAKES,99,100,true);
-        b1.setUser(owner1);
+        b1.setUser(cus1);
         Bakery b2 = new Bakery("fruitcake","cake made of fruits", ProductType.CAKES,56,100,true);
-        b2.setUser(owner2);
+        b2.setUser(cus2);
         Bakery b3 = new Bakery("berrycake","cake made of berries", ProductType.CAKES,69,100,true);
         b3.setUser(bak1);
 
@@ -181,10 +181,5 @@ public class StartupServiceInitDB {
             LOG.info(o.getCustomer().toString());
             LOG.info("-----------------------------------------------------------------------------------------------");
         }
-
-
-
-
     }
-
 }

@@ -33,7 +33,7 @@ public class Bakery {
     @Min(0)
     private int quantity;
 
-    @Column(nullable = false)
+    @Column(name = "ISAVAILABLE", nullable = false)
     private boolean isAvailable;
 
     /**
@@ -121,8 +121,15 @@ public class Bakery {
         return isAvailable;
     }
 
+    public boolean getAvailable() {
+        return isAvailable;
+    }
+
     public void setAvailable(boolean available) {
-        isAvailable = available;
+        this.isAvailable = available;
+    }
+    public String getAvailabilityStatus() {
+        return isAvailable ? "Yes" : "No";
     }
 
     public List<CustomerOrder> getCustomerOrders() {
@@ -179,5 +186,6 @@ public class Bakery {
                 ", customerOrders=" + customerOrders.size() + " orders" +
                 '}';
     }
+
 
 }

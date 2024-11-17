@@ -67,7 +67,6 @@ public class BakeryValidationTest {
         Set<ConstraintViolation<Bakery>> violations = validator.validate(bakery);
         Assertions.assertFalse(violations.isEmpty(), "Expected validation violations due to a negative bakery price.");
 
-        // Log the specific validation failure
         for (ConstraintViolation<Bakery> violation : violations) {
             System.out.println("Validation failed for property: " + violation.getPropertyPath() + " with message: " + violation.getMessage());
             Assertions.assertEquals("price", violation.getPropertyPath().toString());
