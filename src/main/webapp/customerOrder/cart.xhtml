@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                template="../WEB-INF/templates/authNtemplate.xhtml">
+
+    <ui:define name="title">Cart</ui:define>
+
+    <ui:define name="content">
+        <h2>Your Cart</h2>
+
+        <!-- Display Items in Cart -->
+        <h:dataTable styleClass="table table-striped table-hover"
+                     value="#{customerController.customerOrderItems}" var="item">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                <h:outputText value="#{item.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                <h:outputText value="#{item.productDescription}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                <h:outputText value="#{item.price}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:form>
+                    <h:commandButton value="Edit"
+                                     action="#{customerController.editProduct(item)}"
+                                     styleClass="btn btn-sm btn-warning" />
+                    <h:commandButton value="Delete"
+                                     action="#{customerController.deleteProduct(item)}"
+                                     styleClass="btn btn-sm btn-danger" />
+                </h:form>
+            </h:column>
+        </h:dataTable>
+
+        <!-- Total Price -->
+        <h3>Total Price: #{customerController.customerOrder.totalPrice}</h3>
+
+        <!-- Confirm Order -->
+        <h:form>
+            <h:commandButton value="Confirm Order" action="#{customerController.saveCustomerOrder}"
+                             styleClass="btn btn-lg btn-success mt-3" />
+        </h:form>
+
+        <!-- Go Back to Products -->
+        <h:form>
+            <h:commandButton value="Back to Products" action="products.xhtml" styleClass="btn btn-lg btn-secondary mt-3" />
+        </h:form>
+    </ui:define>
+</ui:composition>

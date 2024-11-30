@@ -49,24 +49,15 @@ public class StartupServiceInitDB {
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
 
         Group customerGroup = new Group("CUSTOMER_GROUP","Group of bakery product customers");
-        Group bakeryGroup = new Group("BAKERY_GROUP","Group of Bakeries");
         Group adminGroup = new Group("ADMIN_GROUP","Group of super admins ");
         groupSvc.create(customerGroup);
-        groupSvc.create(bakeryGroup);
         groupSvc.create(adminGroup);
 
         User bak1 = new User("bakery1", "bakery1");
-        bak1.addGroup(bakeryGroup);
         bak1.addGroup(adminGroup);
 
         User bak2 = new User("bakery2", "bakery2");
-        bak2.addGroup(bakeryGroup);
         bak2.addGroup(customerGroup);
-
-
-        User bak3 = new User("bakery3", "bakery3");
-        bak3.addGroup(bakeryGroup);
-
 
         User cus1 = new User("cus1", "cus1");
         cus1.addGroup(customerGroup);
@@ -79,7 +70,6 @@ public class StartupServiceInitDB {
 
         userSvc.create(bak1);
         userSvc.create(bak2);
-        userSvc.create(bak3);
         userSvc.create(cus1);
         userSvc.create(cus2);
         userSvc.create(admin);
@@ -90,7 +80,7 @@ public class StartupServiceInitDB {
         Customer c2 = new Customer("vidya","vidya@mail.com", "3125958456");
         c2.setUser(cus2);
         Customer c3 = new Customer("harsh", "harsh@mail.com", "3166958456");
-        c3.setUser(bak3);
+
 
         cusSvc.create(c1);
         cusSvc.create(c2);

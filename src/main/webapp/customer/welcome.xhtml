@@ -7,35 +7,59 @@
                 xmlns:h="jakarta.faces.html"
                 template="../WEB-INF/templates/authNtemplate.xhtml">
 
-
    <ui:define name="title">Bakery Management CUSTOMER Section</ui:define>
 
-   <ui:define name="content">CUSTOMER content. Your CUSTOMER Username is #{loginController.authenticatedUsername}
+   <ui:define name="content">
+      <h2>Customer Section</h2>
+      <p>Welcome, #{loginController.authenticatedUsername}!</p>
+
+      <!-- Display Bakery Products -->
       <h:dataTable
               styleClass="table table-striped table-hover"
               value="#{bakeryService.readAll()}" var="bakery">
-
+         <!-- Product Name -->
          <h:column>
-            <f:facet name="header">Bakery Name</f:facet>
+            <f:facet name="header">Name</f:facet>
             <h:outputText value="#{bakery.name}"/>
          </h:column>
 
+         <!-- Product Description -->
          <h:column>
-            <f:facet name="header">Product Description</f:facet>
+            <f:facet name="header">Description</f:facet>
             <h:outputText value="#{bakery.productDescription}"/>
          </h:column>
 
+         <!-- Product Price -->
          <h:column>
             <f:facet name="header">Price</f:facet>
             <h:outputText value="#{bakery.price}"/>
          </h:column>
 
+         <!-- Product Quantity -->
          <h:column>
             <f:facet name="header">Quantity</f:facet>
             <h:outputText value="#{bakery.quantity}"/>
          </h:column>
 
+         <!-- Actions: Add to Cart and Delete -->
+         <h:column>
+            <f:facet name="header">Actions</f:facet>
+            <h:form>
+               <!-- Add to Cart Button -->
+               <h:commandButton value="Add to Cart"
+                                action="#{customerController.addProductToOrder(bakery)}"
+                                styleClass="btn btn-sm btn-primary" />
+               <!-- Delete Product Button -->
+               <h:commandButton value="Delete"
+                                action="#{customerController.deleteProduct(bakery)}"
+                                styleClass="btn btn-sm btn-danger" />
+            </h:form>
+         </h:column>
       </h:dataTable>
-   </ui:define>
 
+      <!-- Navigate to Cart -->
+      <h:form>
+         <h:commandButton value="Go to Cart" action="cart.xhtml" styleClass="btn btn-lg btn-success mt-3" />
+      </h:form>
+   </ui:define>
 </ui:composition>

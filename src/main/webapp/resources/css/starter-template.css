@@ -1,5 +1,88 @@
-/* Show it is fixed to the top */
-body {
-    min-height: 75rem;
-    padding-top: 4.5rem;
+/* Navbar Styles */
+.navbar-dark.bg-dark {
+    background-color: #ffe6cc !important; /* Soft Peach */
+}
+.navbar-brand {
+    font-family: 'Cursive', sans-serif;
+    font-size: 2rem;
+    color: #ff9980 !important; /* Coral Pink */
+}
+.navbar .nav-link {
+    color: #6b4226 !important; /* Cocoa Brown */
+    font-weight: bold;
+}
+.navbar .nav-link:hover {
+    color: #ffa07a !important; /* Lighter Peach */
+}
+
+/* Button Styles */
+.btn-outline-success {
+    color: #6b4226 !important; /* Cocoa Brown */
+    border-color: #6b4226 !important;
+}
+.btn-outline-success:hover {
+    background-color: #ff9980 !important; /* Coral Pink */
+    color: #fff !important;
+}
+
+/* Main Content Styles */
+main.container {
+    font-family: 'Poppins', sans-serif;
+    background: url('https://example.com/pastel-bakery-pattern.png') repeat center center / 20%;
+    padding: 20px;
+    color: #4e3629; /* Deep Brown */
+}
+main h1 {
+    font-family: 'Cursive', sans-serif;
+    color: #ff9980; /* Coral Pink */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+main p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #5a3d31; /* Cocoa Brown */
+}
+
+/* Card and Box Styles */
+.bg-body-tertiary {
+    background-color: #fff5e6 !important; /* Cream */
+    border: 1px solid #ffcccb; /* Light Coral */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Icon Decorations */
+.navbar-brand i {
+    color: #ff9980; /* Coral Pink */
+    margin-right: 5px;
+}
+.card-header i {
+    color: #ffa07a; /* Light Peach */
+    margin-right: 5px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Cursive', sans-serif;
+}
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Additional Elements */
+footer {
+    background-color: #ffe6cc; /* Soft Peach */
+    color: #4e3629; /* Deep Brown */
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+footer a {
+    color: #ffa07a; /* Light Peach */
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: #ff9980; /* Coral Pink */
 }

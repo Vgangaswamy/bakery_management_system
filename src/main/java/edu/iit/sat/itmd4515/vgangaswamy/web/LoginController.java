@@ -43,12 +43,6 @@ public class LoginController {
         return isAdmin;
     }
 
-    public boolean isBakery(){
-        boolean isBakery = securityContext.isCallerInRole("BAKERY_ROLE");
-        LOG.info("User isBakery: " + isBakery);
-        return isBakery;
-    }
-
     public boolean isCustomer(){
         boolean isCustomer = securityContext.isCallerInRole("CUSTOMER_ROLE");
         LOG.info("User isCustomer: " + isCustomer);
