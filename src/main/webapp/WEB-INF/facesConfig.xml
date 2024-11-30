@@ -15,12 +15,13 @@
     </application>
 
     <navigation-rule>
-        <from-view-id>/products.xhtml</from-view-id>
+        <from-view-id>/customer/welcome.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>cart.xhtml</from-outcome>
-            <to-view-id>/cart.xhtml</to-view-id>
+            <to-view-id>/customerOrder/cart.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
 
     <navigation-rule>
         <from-view-id>/cart.xhtml</from-view-id>

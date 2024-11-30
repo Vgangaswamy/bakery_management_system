@@ -83,6 +83,10 @@ public class CustomerController implements Serializable {
         return "orderConfirmation.xhtml"; // Redirect to confirmation page
     }
 
+    public List<Bakery> getCustomerOrderItems() {
+        return customerOrder.getBakeryItems();
+    }
+
     // Getters and setters
     public Customer getCustomer() {
         return customer;
@@ -111,6 +115,11 @@ public class CustomerController implements Serializable {
     public void setSelectedBakeryItem(Bakery selectedBakeryItem) {
         this.selectedBakeryItem = selectedBakeryItem;
     }
+
+    public String goToCart() {
+        return "/customerOrder/cart.xhtml"; // Specify the path to the cart page
+    }
+
 }
 
 
