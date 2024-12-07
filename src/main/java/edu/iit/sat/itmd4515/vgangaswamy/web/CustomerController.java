@@ -5,6 +5,7 @@ import edu.iit.sat.itmd4515.vgangaswamy.domain.Customer;
 import edu.iit.sat.itmd4515.vgangaswamy.domain.CustomerOrder;
 import edu.iit.sat.itmd4515.vgangaswamy.service.BakeryService;
 import edu.iit.sat.itmd4515.vgangaswamy.service.CustomerOrderService;
+import edu.iit.sat.itmd4515.vgangaswamy.service.CustomerService;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
@@ -22,6 +23,9 @@ public class CustomerController implements Serializable {
 
     @EJB
     private BakeryService bakeryService;
+
+    @EJB
+    private CustomerService customerService;
 
     @EJB
     private CustomerOrderService customerOrderService;
@@ -77,10 +81,65 @@ public class CustomerController implements Serializable {
 
     // Save or confirm the customer order
     public String saveCustomerOrder() {
-        LOG.info("Saving customer order: " + customerOrder);
-        customerOrder.setCustomer(customer); // Associate the order with the customer
-        customerOrderService.create(customerOrder); // Persist the order
-        return "orderConfirmation.xhtml"; // Redirect to confirmation page
+        LOG.info("saveCustomerOrder() invoked.");
+
+        // Validate Customer Data
+        validateCustomer();
+
+        // Persist Customer if new
+        if (customer.getId() == null) {
+            saveNewCustomer();
+        }
+
+        // Persist CustomerOrder
+        saveCustomerOrderToDatabase();
+
+        // Redirect to confirmation page
+        return "/customerOrder/OrderConfirmation.xhtml?faces-redirect=true";
+    }
+
+    private void validateCustomer() {
+        if (customer.getName() == null || customer.getName().isBlank()) {
+            LOG.severe("Customer name is invalid: " + customer.getName());
+            throw new IllegalArgumentException("Customer name must not be blank.");
+        }
+        if (customer.getEmail() == null || customer.getEmail().isBlank()) {
+            LOG.severe("Customer email is invalid: " + customer.getEmail());
+            throw new IllegalArgumentException("Customer email must not be blank.");
+        }
+        if (customer.getPhoneNumber() == null || customer.getPhoneNumber().isBlank()) {
+            LOG.severe("Customer phone number is invalid: " + customer.getPhoneNumber());
+            throw new IllegalArgumentException("Customer phone number must not be blank.");
+        }
+    }
+
+    private void saveNewCustomer() {
+        try {
+            LOG.info("Persisting new customer: " + customer);
+            customerService.create(customer);
+            LOG.info("Customer persisted successfully.");
+        } catch (Exception e) {
+            LOG.severe("Error persisting customer: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    private void saveCustomerOrderToDatabase() {
+        customerOrder.setCustomer(customer); // Associate customer with the order
+        LOG.info("CustomerOrder details: " + customerOrder);
+
+        if (customerOrder.getBakeryItems() == null || customerOrder.getBakeryItems().isEmpty()) {
+            LOG.severe("CustomerOrder has no items.");
+            throw new IllegalArgumentException("CustomerOrder must have at least one item.");
+        }
+
+        try {
+            customerOrderService.create(customerOrder);
+            LOG.info("CustomerOrder persisted successfully.");
+        } catch (Exception e) {
+            LOG.severe("Error persisting CustomerOrder: " + e.getMessage());
+            throw e;
+        }
     }
 
     public List<Bakery> getCustomerOrderItems() {
@@ -119,7 +178,6 @@ public class CustomerController implements Serializable {
     public String goToCart() {
         return "/customerOrder/cart.xhtml"; // Specify the path to the cart page
     }
-
 }
 
 

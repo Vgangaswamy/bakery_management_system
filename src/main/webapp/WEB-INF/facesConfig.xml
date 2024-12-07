@@ -24,11 +24,13 @@
 
 
     <navigation-rule>
-        <from-view-id>/cart.xhtml</from-view-id>
+        <from-view-id>/customerOrder/cart.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>orderConfirmation.xhtml</from-outcome>
             <to-view-id>/orderConfirmation.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
+
 
 </faces-config>

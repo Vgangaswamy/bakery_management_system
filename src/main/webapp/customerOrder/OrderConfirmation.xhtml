@@ -11,7 +11,8 @@
       <p>Thank you, #{customerController.customer.name}! Your order has been confirmed.</p>
       <p>Total Price: #{customerController.customerOrder.totalPrice}</p>
       <h:form>
-         <h:commandButton value="Back to Home" action="welcome.xhtml" styleClass="btn btn-lg btn-primary mt-3" />
+         <h:commandButton value="Back to Home" action="customer/welcome.xhtml" styleClass="btn btn-lg btn-primary mt-3" />
+
       </h:form>
    </ui:define>
 </ui:composition>

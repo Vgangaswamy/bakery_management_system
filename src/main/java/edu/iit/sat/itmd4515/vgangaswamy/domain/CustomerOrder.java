@@ -139,6 +139,15 @@ public class CustomerOrder {
         this.customer = customer;
     }
 
+    public void addBakeryItem(Bakery item) {
+        this.bakeryItems.add(item);
+    }
+
+    public void removeBakeryItem(Bakery item) {
+        this.bakeryItems.remove(item);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -172,9 +181,10 @@ public class CustomerOrder {
                 "id=" + id +
                 ", date=" + date +
                 ", totalPrice=" + totalPrice +
-                ", bakeryItems=" + bakeryItems.size() + " items" +
-                ", customer=" + customer.getName() +
+                ", bakeryItems=" + (bakeryItems != null ? bakeryItems.size() : 0) + " items" +
+                ", customer=" + (customer != null ? customer.getName() : "N/A") +
                 '}';
     }
+
 
 }

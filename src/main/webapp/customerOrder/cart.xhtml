@@ -40,8 +40,31 @@
         <!-- Total Price -->
         <h3>Total Price: #{customerController.customerOrder.totalPrice}</h3>
 
-        <!-- Confirm Order -->
+        <!-- Customer Details Section -->
+        <h2>Enter Your Details</h2>
         <h:form>
+            <h:outputLabel for="name" value="Name:" />
+            <h:inputText id="name" value="#{customerController.customer.name}" required="true"
+                         requiredMessage="Name is required." />
+            <h:message for="name" styleClass="text-danger" />
+
+            <br />
+
+            <h:outputLabel for="email" value="Email:" />
+            <h:inputText id="email" value="#{customerController.customer.email}" required="true"
+                         requiredMessage="Email is required." />
+            <h:message for="email" styleClass="text-danger" />
+
+            <br />
+
+            <h:outputLabel for="phoneNumber" value="Phone Number:" />
+            <h:inputText id="phoneNumber" value="#{customerController.customer.phoneNumber}" required="true"
+                         requiredMessage="Phone number is required." />
+            <h:message for="phoneNumber" styleClass="text-danger" />
+
+            <br />
+
+            <!-- Confirm Order Button -->
             <h:commandButton value="Confirm Order" action="#{customerController.saveCustomerOrder}"
                              styleClass="btn btn-lg btn-success mt-3" />
         </h:form>
