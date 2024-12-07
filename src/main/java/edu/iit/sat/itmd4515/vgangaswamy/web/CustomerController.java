@@ -142,6 +142,10 @@ public class CustomerController implements Serializable {
         }
     }
 
+    public String goToWelcomePage() {
+        return "/customer/welcome.xhtml?faces-redirect=true";
+    }
+
     public List<Bakery> getCustomerOrderItems() {
         return customerOrder.getBakeryItems();
     }

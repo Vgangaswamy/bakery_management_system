@@ -1,0 +1,101 @@
+/* Pastel Peach */
+.btn-pastel-peach {
+    background-color: #FFDAB9; /* Pastel Peach */
+    color: #4E342E; /* Dark Brown for contrast */
+    border: 2px solid #4E342E;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.btn-pastel-peach:hover {
+    background-color: #FFCBA4; /* Slightly darker peach */
+    color: #2F2F2F; /* Adjusted hover text color */
+}
+
+/* Pastel Blue */
+.btn-pastel-blue {
+    background-color: #AEC6CF; /* Pastel Blue */
+    color: #2F3E46; /* Charcoal for contrast */
+    border: 2px solid #2F3E46;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.btn-pastel-blue:hover {
+    background-color: #8DAEB6; /* Slightly darker blue */
+    color: #1C1F26; /* Adjusted hover text color */
+}
+
+/* Pastel Green */
+.btn-pastel-green {
+    background-color: #B2DFDB; /* Pastel Green */
+    color: #2C6E49; /* Deep Forest Green for contrast */
+    border: 2px solid #2C6E49;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.btn-pastel-green:hover {
+    background-color: #9FD6D2; /* Slightly darker green */
+    color: #1F4F36; /* Adjusted hover text color */
+}
+
+/* Pastel Yellow */
+.btn-pastel-yellow {
+    background-color: #FFECB3; /* Pastel Yellow */
+    color: #5D4037; /* Chocolate Brown for contrast */
+    border: 2px solid #5D4037;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.btn-pastel-yellow:hover {
+    background-color: #FFDF90; /* Slightly darker yellow */
+    color: #3E2D26; /* Adjusted hover text color */
+}
+
+/* Pastel Pink */
+.btn-pastel-pink {
+    background-color: #F8BBD0; /* Pastel Pink */
+    color: #4E342E; /* Dark Brown for contrast */
+    border: 2px solid #4E342E;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.btn-pastel-pink:hover {
+    background-color: #F48FB1; /* Slightly darker pink */
+    color: #3C2925; /* Adjusted hover text color */
+}
+
+/* Pastel Purple */
+.btn-pastel-purple {
+    background-color: #D1C4E9; /* Pastel Purple */
+    color: #3C3F58; /* Dark Slate Blue for contrast */
+    border: 2px solid #3C3F58;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.btn-pastel-purple:hover {
+    background-color: #B39DDB; /* Slightly darker purple */
+    color: #292A3B; /* Adjusted hover text color */
+}

@@ -48,18 +48,18 @@
                <!-- Add to Cart Button -->
                <h:commandButton value="Add to Cart"
                                 action="#{customerController.addProductToOrder(bakery)}"
-                                styleClass="btn btn-sm btn-primary" />
+                                styleClass="btn btn-pastel-peach" />
                <!-- Delete Product Button -->
                <h:commandButton value="Delete"
                                 action="#{customerController.deleteProduct(bakery)}"
-                                styleClass="btn btn-sm btn-danger" />
+                                styleClass="btn btn-pastel-peach" />
             </h:form>
          </h:column>
       </h:dataTable>
 
       <!-- Navigate to Cart -->
       <h:form>
-         <h:commandButton value="Go to Cart" action="#{customerController.goToCart}" styleClass="btn btn-lg btn-success mt-3" />
+         <h:commandButton value="Go to Cart" action="#{customerController.goToCart}" styleClass="btn btn-pastel-peach" />
       </h:form>
    </ui:define>
 </ui:composition>

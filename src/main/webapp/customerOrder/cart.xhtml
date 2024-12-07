@@ -7,6 +7,8 @@
     <ui:define name="title">Cart</ui:define>
 
     <ui:define name="content">
+        <h:outputStylesheet library="css" name="style.css" />
+
         <h2>Your Cart</h2>
 
         <!-- Display Items in Cart -->
@@ -29,10 +31,10 @@
                 <h:form>
                     <h:commandButton value="Edit"
                                      action="#{customerController.editProduct(item)}"
-                                     styleClass="btn btn-sm btn-warning" />
+                                     styleClass="btn btn-pastel-peach"  />
                     <h:commandButton value="Delete"
                                      action="#{customerController.deleteProduct(item)}"
-                                     styleClass="btn btn-sm btn-danger" />
+                                     styleClass="btn btn-pastel-peach" />
                 </h:form>
             </h:column>
         </h:dataTable>
@@ -66,12 +68,12 @@
 
             <!-- Confirm Order Button -->
             <h:commandButton value="Confirm Order" action="#{customerController.saveCustomerOrder}"
-                             styleClass="btn btn-lg btn-success mt-3" />
+                             styleClass="btn btn-pastel-peach" />
         </h:form>
 
         <!-- Go Back to Products -->
         <h:form>
-            <h:commandButton value="Back to Products" action="products.xhtml" styleClass="btn btn-lg btn-secondary mt-3" />
+            <h:commandButton value="Back to Home" action="#{customerController.goToWelcomePage}" styleClass="btn btn-pastel-peach" />
         </h:form>
     </ui:define>
 </ui:composition>
