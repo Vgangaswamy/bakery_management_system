@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                template="/WEB-INF/templates/template.xhtml"
+                xmlns:h="jakarta.faces.html">
+
+    <ui:define name="title">
+        Sign Up Page
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="container mt-5">
+            <h1 class="text-center">Sign Up</h1>
+            <p class="text-center text-muted">Create your account to access our services.</p>
+
+            <h:form>
+                <!-- Username Input -->
+                <div class="mb-3">
+                    <h:outputLabel for="username" value="Username:" class="form-label" />
+                    <h:inputText id="username"
+                                 value="#{userController.user.username}"
+                                 styleClass="form-control #{facesContext.validationFailed and empty userController.user.username ? 'is-invalid' : ''}"
+                                 required="true" requiredMessage="Username is required." />
+                    <h:message for="username" styleClass="invalid-feedback" />
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-3">
+                    <h:outputLabel for="password" value="Password:" class="form-label" />
+                    <h:inputSecret id="password"
+                                   value="#{userController.user.password}"
+                                   styleClass="form-control #{facesContext.validationFailed and empty userController.user.password ? 'is-invalid' : ''}"
+                                   required="true" requiredMessage="Password is required." />
+                    <h:message for="password" styleClass="invalid-feedback" />
+                </div>
+
+                <!-- Role Selection -->
+                <div class="mb-3">
+                    <h:outputLabel for="role" value="Role:" class="form-label" />
+                    <h:selectOneMenu id="role" value="#{userController.selectedRole}" class="form-select">
+                        <f:selectItem itemValue="CUSTOMER_GROUP" itemLabel="Customer" />
+                        <f:selectItem itemValue="ADMIN_GROUP" itemLabel="Admin" />
+                    </h:selectOneMenu>
+                    <h:message for="role" styleClass="invalid-feedback" />
+                </div>
+
+                <!-- Sign Up Button -->
+                <div class="d-grid">
+                    <h:commandButton value="Sign Up" action="#{userController.register}"
+                                     styleClass="btn btn-success btn-lg" />
+                </div>
+
+                <!-- Back to Login Link -->
+                <div class="mt-3 text-center">
+                    <h:link outcome="/login.xhtml" styleClass="btn btn-link">Back to Login</h:link>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

@@ -31,6 +31,24 @@
         </navigation-case>
     </navigation-rule>
 
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>/signup.xhtml</from-outcome>
+            <to-view-id>/signup.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/admin/createProductConfirmation.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>admin/welcome.xhtml</from-outcome>
+            <to-view-id>/admin/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+
 
 
 </faces-config>

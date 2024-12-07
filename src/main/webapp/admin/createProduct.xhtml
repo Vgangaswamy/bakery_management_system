@@ -1,62 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                template="../WEB-INF/templates/authNtemplate.xhtml">
 
-<h:head>
+    <ui:define name="title">Create Product</ui:define>
 
-    <title>Welcome</title>
+    <ui:define name="content">
+        <h1>Create a New Bakery Product</h1>
+        <h:form>
+            <h:outputLabel for="bakeryProductName" value="Product Name:" />
+            <h:inputText id="bakeryProductName" value="#{bakeryController.bakery.name}" required="true" />
+            <br />
 
-</h:head>
+            <h:outputLabel for="productQuantity" value="Quantity:" />
+            <h:inputText id="productQuantity" value="#{bakeryController.bakery.quantity}" required="true" />
+            <br />
 
-<h:body>
-    <h:form>
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Bakery Product Name: " for="bakeryProductName" />
-                <h:inputText id="bakeryProductName" value="#{bakeryController.bakery.name}"/>
-                <h:message for="bakeryProductName" errorStyle="color: darkred" />
-            </h:panelGroup>
-        </p>
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Quantity: " for="productQuantity" />
-                <h:inputText id="productQuantity" value="#{bakeryController.bakery.quantity}" />
-                <h:message for="productQuantity" errorStyle="color: darkred"/>
-            </h:panelGroup>
-        </p>
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Product Type: " for="productType"/>
-                <h:selectOneMenu id="productType" value="#{bakeryController.bakery.type}">
-                    <f:selectItems value="#{bakeryService.allProductTypes}"
-                                   var="productType"
-                                   itemLabel="#{productType}"
-                                   itemValue="#{productType}"/>
-                </h:selectOneMenu>
-                <h:message for="productType" errorStyle="color: darkred" />
-            </h:panelGroup>
-        </p>
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Product Description: " for="productDesc"/>
-                <h:inputText id="productDesc" value="#{bakeryController.bakery.productDescription}"/>
-                <h:message for="productDesc" errorStyle="color: darkred"/>
-            </h:panelGroup>
-        </p>
+            <h:outputLabel for="productType" value="Product Type:" />
+            <h:selectOneMenu id="productType" value="#{bakeryController.bakery.type}">
+                <f:selectItems value="#{bakeryService.allProductTypes}" var="type" itemValue="#{type}" itemLabel="#{type}" />
+            </h:selectOneMenu>
+            <br />
 
-        <!-- Added the isAvailable checkbox input for the availability status of the product -->
-        <p>
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Available: " for="isAvailable"/>
-                <h:selectBooleanCheckbox id="isAvailable" value="#{bakeryController.bakery.available}"/>
-                <h:message for="isAvailable" errorStyle="color: darkred"/>
-            </h:panelGroup>
-        </p>
+            <h:outputLabel for="productDescription" value="Description:" />
+            <h:inputText id="productDescription" value="#{bakeryController.bakery.productDescription}" required="true" />
+            <br />
 
-        <h:commandButton value="Create a product" action="#{bakeryController.saveBakeryProduct()}"/>
-    </h:form>
+            <h:outputLabel for="isAvailable" value="Available:" />
+            <h:selectBooleanCheckbox id="isAvailable" value="#{bakeryController.bakery.available}" />
+            <br />
 
-</h:body>
-</html>
+            <h:outputLabel for="productPrice" value="Price:" />
+            <h:inputText id="productPrice" value="#{bakeryController.bakery.price}" required="true" />
+            <br />
+
+            <h:commandButton value="Submit Product" action="#{bakeryController.saveBakeryProduct}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

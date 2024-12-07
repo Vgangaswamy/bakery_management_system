@@ -3,6 +3,7 @@ package edu.iit.sat.itmd4515.vgangaswamy.web;
 import edu.iit.sat.itmd4515.vgangaswamy.security.User;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -57,26 +58,31 @@ public class LoginController {
 
     //action methods
     public String doLogin() throws IOException {
-
         HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
         HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
-        Credential cred = new UsernamePasswordCredential(this.user.getUsername(), new Password(this.user.getPassword()));
+        Credential credential = new UsernamePasswordCredential(user.getUsername(), new Password(user.getPassword()));
 
-        AuthenticationStatus status = securityContext.authenticate(request, response, AuthenticationParameters.withParams().credential(cred));
+        AuthenticationStatus status = securityContext.authenticate(request, response,
+                AuthenticationParameters.withParams().credential(credential));
 
         if (status == AuthenticationStatus.SUCCESS) {
-            LOG.info("Authentication successful");
-            return "/welcome.xhtml?faces-redirect=true";
+            // Redirect to a role-specific home page
+            if (isAdmin()) {
+                return "/admin/welcome.xhtml?faces-redirect=true"; // Admin dashboard
+            } else if (isCustomer()) {
+                return "/customer/welcome.xhtml?faces-redirect=true"; // Customer homepage
+            } else {
+                return "/welcome.xhtml?faces-redirect=true"; // Default welcome page
+            }
+        } else if (status == AuthenticationStatus.SEND_FAILURE || status == AuthenticationStatus.NOT_DONE) {
+            // Authentication failed
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", "Invalid credentials"));
+            return null; // Stay on login page
         }
 
-        if (status == AuthenticationStatus.SEND_FAILURE || status == AuthenticationStatus.NOT_DONE) {
-            LOG.info("Authentication failed, status: " + status);
-            facesContext.getExternalContext().redirect("/error.xhtml");
-            return null;
-        }
-
-        return "/welcome.xhtml?faces-redirect=true";
+        return null;
     }
+
 
     public String doLogout(){
         LOG.info("LoginController.doLogout()");

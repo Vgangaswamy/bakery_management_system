@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Product Added</title>
-    </h:head>
-    <h:body>
-        <h1>Thank you for adding a product</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                template="../WEB-INF/templates/authNtemplate.xhtml">
+
+    <ui:define name="title">Product Confirmation</ui:define>
+
+    <ui:define name="content">
+        <h1>Product Added Successfully</h1>
         <ul>
-            <li>#{bakeryController.bakery.name}</li>
-            <li>#{bakeryController.bakery.quantity}</li>
-            <li>#{bakeryController.bakery.type}</li>
-            <li>#{bakeryController.bakery.id}</li>
-            <li>#{bakeryController.bakery.productDescription}</li>
-            <li>#{bakeryController.bakery.price}</li>
+            <li>Name: #{bakeryController.bakery.name}</li>
+            <li>Quantity: #{bakeryController.bakery.quantity}</li>
+            <li>Type: #{bakeryController.bakery.type}</li>
+            <li>Description: #{bakeryController.bakery.productDescription}</li>
+            <li>Price: #{bakeryController.bakery.price}</li>
+            <li>Available: #{bakeryController.bakery.available}</li>
         </ul>
-    </h:body>
-</html>
+        <h:form>
+            <h:commandButton value="Back to Admin Page" action="welcome.xhtml" />
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -16,6 +16,10 @@ public abstract class AbstractService<T> {
         this.entityClass = entityClass;
     }
 
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
     public void create(T e){
         em.persist(e);
     }
