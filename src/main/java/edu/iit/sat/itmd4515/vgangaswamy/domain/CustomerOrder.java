@@ -23,48 +23,30 @@ public class CustomerOrder {
     private Long id;
 
     @FutureOrPresent
+    @Column(nullable = false) // Ensure non-null in the database schema
     private LocalDate date;
+
     @Min(0)
     private double totalPrice;
 
-    /**
-     * ManyToMany bidirectional relationship
-     * CustomerOrder is the owning side
-     * Bakery is the inverse side
-     */
     @ManyToMany
     @JoinTable(
             name = "Order_Bakery",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "bakery_id")
     )
-
     private List<Bakery> bakeryItems = new ArrayList<>();
 
-
-    /**
-     * ManyToOne bidirectional relationship
-     * CustomerOrder is the owning side
-     * customer is the inverse side
-     */
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    /**
-     * Default constructor (required by JPA).
-     */
     public CustomerOrder() {
+        this.date = LocalDate.now(); // Default to today's date
     }
 
-    /**
-     * Constructor to initialize the date and total price of the order.
-     *
-     * @param date       the date when the order was placed
-     * @param totalPrice the total price of the order
-     */
     public CustomerOrder(LocalDate date, double totalPrice, Customer customer) {
-        this.date = date;
+        this.date = (date != null) ? date : LocalDate.now();
         this.totalPrice = totalPrice;
         this.customer = customer;
     }
