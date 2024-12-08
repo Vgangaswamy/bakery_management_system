@@ -26,13 +26,19 @@
         <location>/errors/error.xhtml</location>
     </error-page>
 
+    <!-- Define Security Roles -->
     <security-role>
         <role-name>ADMIN_ROLE</role-name>
     </security-role>
     <security-role>
         <role-name>CUSTOMER_ROLE</role-name>
     </security-role>
+    <security-role>
+        <role-name>BAKERY_ROLE</role-name>
+    </security-role>
 
+
+    <!-- Admin-only access -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Admin Only Content</web-resource-name>
@@ -43,6 +49,7 @@
         </auth-constraint>
     </security-constraint>
 
+    <!-- Customer-only access -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Customer Only Content</web-resource-name>
@@ -53,6 +60,18 @@
         </auth-constraint>
     </security-constraint>
 
+    <!-- Bakery-only access -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Bakery Only Content</web-resource-name>
+            <url-pattern>/bakery/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>BAKERY_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Faces Servlet -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
@@ -63,6 +82,5 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-
 
 </web-app>

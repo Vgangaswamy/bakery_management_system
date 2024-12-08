@@ -50,14 +50,17 @@ public class StartupServiceInitDB {
 
         Group customerGroup = new Group("CUSTOMER_GROUP","Group of bakery product customers");
         Group adminGroup = new Group("ADMIN_GROUP","Group of super admins ");
+        Group bakeryGroup = new Group("BAKERY_GROUP","Group of bakery owners ");
+
         groupSvc.create(customerGroup);
         groupSvc.create(adminGroup);
+        groupSvc.create(bakeryGroup);
 
         User bak1 = new User("bakery1", "bakery1");
-        bak1.addGroup(adminGroup);
+        bak1.addGroup(bakeryGroup);
 
         User bak2 = new User("bakery2", "bakery2");
-        bak2.addGroup(customerGroup);
+        bak2.addGroup(bakeryGroup);
 
         User cus1 = new User("cus1", "cus1");
         cus1.addGroup(customerGroup);

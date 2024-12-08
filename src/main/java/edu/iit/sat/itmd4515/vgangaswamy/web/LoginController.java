@@ -50,6 +50,11 @@ public class LoginController {
         return isCustomer;
     }
 
+    public boolean isBakeryOwner() {
+        boolean isBakeryOwner = securityContext.isCallerInRole("BAKERY_ROLE");
+        LOG.info("User isBakeryOwner: " + isBakeryOwner);
+        return isBakeryOwner;
+    }
 
     //Helper methods
     public String getAuthenticatedUsername(){
@@ -58,6 +63,7 @@ public class LoginController {
 
     //action methods
     public String doLogin() throws IOException {
+        LOG.info("Inside LoginController.doLogin()");
         HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
         HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
         Credential credential = new UsernamePasswordCredential(user.getUsername(), new Password(user.getPassword()));
@@ -65,17 +71,25 @@ public class LoginController {
         AuthenticationStatus status = securityContext.authenticate(request, response,
                 AuthenticationParameters.withParams().credential(credential));
 
+        LOG.info("Authentication status: " + status);
+
         if (status == AuthenticationStatus.SUCCESS) {
-            // Redirect to a role-specific home page
+            LOG.info("Authentication successful. Checking user roles...");
             if (isAdmin()) {
+                LOG.info("User is admin. Redirecting to admin welcome page.");
                 return "/admin/welcome.xhtml?faces-redirect=true"; // Admin dashboard
             } else if (isCustomer()) {
+                LOG.info("User is customer. Redirecting to customer welcome page.");
                 return "/customer/welcome.xhtml?faces-redirect=true"; // Customer homepage
+            } else if (isBakeryOwner()) {
+                LOG.info("User is bakery owner. Redirecting to bakery welcome page.");
+                return "/bakery/welcome.xhtml?faces-redirect=true"; // Bakery homepage
             } else {
+                LOG.info("User role not recognized. Redirecting to default welcome page.");
                 return "/welcome.xhtml?faces-redirect=true"; // Default welcome page
             }
         } else if (status == AuthenticationStatus.SEND_FAILURE || status == AuthenticationStatus.NOT_DONE) {
-            // Authentication failed
+            LOG.warning("Authentication failed.");
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", "Invalid credentials"));
             return null; // Stay on login page
         }

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                template="../WEB-INF/templates/authNtemplate.xhtml">
+
+    <ui:define name="title">Bakery Management Bakery Section</ui:define>
+
+    <ui:define name="content">
+        Bakery content. Your bakery Username is #{loginController.authenticatedUsername}
+
+        <h:dataTable
+                styleClass="table table-striped table-hover"
+                value="#{bakeryService.readAll()}" var="bakery">
+
+            <h:column>
+                <f:facet name="header">Bakery Name</f:facet>
+                <h:outputText value="#{bakery.name}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Product Description</f:facet>
+                <h:outputText value="#{bakery.productDescription}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                <h:outputText value="#{bakery.price}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Quantity</f:facet>
+                <h:outputText value="#{bakery.quantity}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Is the product available?</f:facet>
+                <h:outputText value="#{bakery.availabilityStatus}" />
+            </h:column>
+
+        </h:dataTable>
+
+    </ui:define>
+</ui:composition>
