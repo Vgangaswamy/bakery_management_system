@@ -83,7 +83,7 @@ public class LoginController {
                 return "/customer/welcome.xhtml?faces-redirect=true"; // Customer homepage
             } else if (isBakeryOwner()) {
                 LOG.info("User is bakery owner. Redirecting to bakery welcome page.");
-                return "/bakery/welcome.xhtml?faces-redirect=true"; // Bakery homepage
+                return "/owner/welcome.xhtml?faces-redirect=true"; // Bakery homepage
             } else {
                 LOG.info("User role not recognized. Redirecting to default welcome page.");
                 return "/welcome.xhtml?faces-redirect=true"; // Default welcome page

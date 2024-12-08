@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                template="../WEB-INF/templates/authNtemplate.xhtml">
+
+    <ui:define name="title">Inventory Management</ui:define>
+
+    <ui:define name="content">
+        <h1 class="text-center">Inventory Details</h1>
+        <p class="text-center text-muted">Manage and review your inventory details.</p>
+
+        <h:dataTable
+                styleClass="table table-striped table-hover"
+                value="#{inventoryController.allInventories}" var="inventory">
+
+            <h:column>
+                <f:facet name="header">Inventory Name</f:facet>
+                <h:outputText value="#{inventory.name}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Stock Level</f:facet>
+                <h:outputText value="#{inventory.stockLevel}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Minimum Stock Level</f:facet>
+                <h:outputText value="#{inventory.minimumStockLevel}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Ingredient Name</f:facet>
+                <h:outputText value="#{inventory.ingredient.name}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Ingredient Quantity</f:facet>
+                <h:outputText value="#{inventory.ingredient.quantity}" />
+            </h:column>
+        </h:dataTable>
+
+        <h:form>
+            <h:commandButton value="Back to Bakery"
+                             action="welcome.xhtml"
+                             styleClass="btn btn-primary mt-3" />
+        </h:form>
+    </ui:define>
+</ui:composition>
