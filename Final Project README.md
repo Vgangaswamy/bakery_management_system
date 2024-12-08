@@ -152,6 +152,8 @@ cus1 as username and password
 bakery1 as username and password
 ```
 
+I have saved my screenshots of all my pages in a folder with the name "Screenshots".
+
 #### **Future Enhancements**
 - Add WebSocket notifications for real-time updates.
 - Enhance security by adding CAPTCHA for login.
@@ -162,6 +164,67 @@ bakery1 as username and password
 - Bootstrap for frontend styling.
 
 ---
+### Development Insights
+
+Working on the **Bakery Management System** has been a fantastic learning experience for me, As this was also an Idea I had in my undergraduate. It allowed me to explore multiple aspects of Java EE development and understand how different components come together to build a complete web application.
+
+
+---
+
+#### **What I Learned**
+1. **Jakarta EE and JSF**:
+   - I gained a deeper understanding of Jakarta EE, especially the integration of JPA, EJBs, and JSF. 
+   - Learning how JSF handles page navigation, data binding, and component reusability was particularly valuable.
+
+2. **Database Design**:
+   - Designing the database schema was an eye-opener. Mapping relationships like `One-to-Many` and `Many-to-Many` using JPA helped solidify my understanding of ORM.
+
+3. **Security**:
+   - Implementing role-based access control for admins and customers taught me how to use Jakarta Security effectively. I now appreciate how container-managed security can simplify authentication and authorization.
+
+4. **Search and Filters**:
+   - Adding a dynamic search bar was a challenge but a rewarding one. It showed me how important user-friendly filtering features are for enhancing usability.
+
+5. **Layered Architecture**:
+   - Separating concerns into persistence, service, and presentation layers was a key takeaway. It made debugging and extending the application much easier.
+
+---
+
+#### **What I’d Like to Explore Further**
+1. **Real-Time Updates**:
+   - I’d love to explore adding real-time features like inventory notifications or order status updates using WebSocket or SSE.
+   
+2. **API Development**:
+   - Building a REST API for external integrations (like connecting the bakery system to delivery platforms) is something I’d like to try in the future.
+
+3. **Advanced UI**:
+   - While I used Bootstrap and styled some components, I’d like to delve deeper into front-end frameworks like React or Angular to create more dynamic and responsive interfaces.
+
+---
+
+#### **What I Liked**
+1. **Building Something Useful**:
+   - Knowing that the project could actually be used by a bakery business made it feel meaningful. It’s satisfying to see how the different pieces fit together to solve real-world problems.
+
+2. **Role-Based Navigation**:
+   - I really enjoyed implementing navigation flows for different roles (customer and admin). It felt rewarding to see it working seamlessly.
+
+3. **Custom Validators**:
+   - Adding validators for email and phone numbers was a small feature, but I liked how it improved the user experience and ensured data integrity.
+
+---
+
+#### **What I Didn’t Like**
+1. **JSF Debugging**:
+   - Debugging JSF pages, especially EL expressions, was tricky at times. Minor typos in binding expressions could cause silent failures, which was frustrating.
+
+2. **UI Limitations**:
+   - While Bootstrap made styling easier, I felt limited by the predefined components. It made me realize how much more flexibility modern front-end frameworks offer.
+
+---
+
+#### **Overall Experience**
+This project pushed me out of my comfort zone and helped me grow as a developer. It wasn’t just about coding—it was about understanding the bigger picture of how a system works end-to-end. I feel more confident in my ability to design and build scalable web applications, and I’m excited to keep improving and learning from future projects.
 
 
 
