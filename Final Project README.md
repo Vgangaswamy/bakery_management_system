@@ -5,6 +5,9 @@
 #### **Project Overview**
 The **Bakery Management System** is a Java EE-based web application designed to manage bakery operations efficiently. It provides role-based functionality for customers and administrators, including product browsing, order management, and inventory control.
 
+
+- I have saved my screenshots of all my pages in a folder with the name "Screenshots".
+
 ---
 
 ### **Features**
@@ -152,7 +155,7 @@ cus1 as username and password
 bakery1 as username and password
 ```
 
-I have saved my screenshots of all my pages in a folder with the name "Screenshots".
+
 
 #### **Future Enhancements**
 - Add WebSocket notifications for real-time updates.
