@@ -1,38 +1,168 @@
-# itmd4515-f24-fp-Vgangaswamy
-Project Screenshots:
-*************************************************************************************************************************************************************************************************
+### Bakery Management System - README
 
-**If the user input passes validation:**
-<img width="1134" alt="Screenshot1" src="https://github.com/user-attachments/assets/b9754e63-f021-4211-b912-401fcc8c2c98">
-- The above Image is the BEFORE of the form
-<img width="1134" alt="Screenshot2" src="https://github.com/user-attachments/assets/325f41b2-b24f-48f3-b6e7-711ae9e8aa8c">
-- The above Image is the AFTER of the form, the confiramtion view.
+---
 
-**If the user input does not pass validation**
-<img width="1134" alt="Screenshot3" src="https://github.com/user-attachments/assets/54599b7c-2740-4eec-ad75-4152d03de8de">
-- The above image displays the fields with wrong input or null input
-<img width="1134" alt="Screenshot4" src="https://github.com/user-attachments/assets/5f3a1174-15e3-4104-992f-6f880a6d4b59">
-- The above image displays the appropriate error messages to handle them
+#### **Project Overview**
+The **Bakery Management System** is a Java EE-based web application designed to manage bakery operations efficiently. It provides role-based functionality for customers and administrators, including product browsing, order management, and inventory control.
 
-*************************************************************************************************************************************************************************************************
+---
 
-** Graduate student Requirements: **
-- The below screenshot displays the newly created language_id and name of the language in the table.
-<img width="907" alt="Screenshot 2024-09-16 at 10 13 30 PM" src="https://github.com/user-attachments/assets/f5e21b20-1603-433f-8473-bede1e391fe5">
+### **Features**
 
-*************************************************************************************************************************************************************************************************
+#### **Customer Features**
+- Browse available bakery products added by the admin.
+- Search for products using a keyword (name or description) in the customer section.
+- Add products to a cart and place orders.
+- Check cart to add and delete products.
+#### **Admin Features**
+- Add, edit, and delete bakery products.
+- Manage inventory.
+- Monitor product availability.
 
--> Redirect and forward operations:
-- A redirect sends a response back to the client, asking the browser to make a new request to the target URL. The browser’s URL will change, and it’s typically used when you want to prevent the user from resubmitting a form (Post/Redirect/Get pattern).
-- A forward happens on the server-side, where the request is forwarded to another resource (like a JSP) without the client being aware of it. The URL in the browser remains unchanged.
+---
 
--> Validating user submissions without the Bean Validation API:
-- Without Bean Validation API, validation would have to be done manually using imperative logic and manually check each field for constraints like null, length, or format and then manually construct error messages for the user.
+### **Technologies Used**
+- **Java EE**: Jakarta Faces (JSF), Jakarta Persistence (JPA), Jakarta Security (Role-Based Access).
+- **Application Server**: Payara 6.2023.
+- **Database**: MySQL (or compatible RDBMS).
+- **Frontend**: JSF, Bootstrap for UI design.
+- **Build Tool**: Maven.
+- **Mail Integration**: JavaMail API.
+- **Languages**: Java 17, XHTML.
 
--> scale to a real application with 100's of entities:
-- If I had to manually validate user input without using a standard validation framework like the Bean Validation API, scaling that approach across hundreds of entities would quickly become overwhelming. Each entity would require its own validation checks scattered across different servlets or layers of business logic. This would not only lead to a lot of repetitive code but also make the application harder to maintain and more prone to errors. On the other hand, using the Bean Validation API allows me to define validation rules directly within the entity classes using annotations like `@NotNull` and `@Size`. This approach makes it much easier to manage and extend the application because the validation logic is centralized and reusable, meaning that adding new entities or modifying existing ones doesn't require duplicating validation code. It’s a cleaner, more efficient way to handle validation in large-scale applications.
+---
 
--> Why didn't we need to include any additional dependencies (i.e. Bean Validation, JDBC) in this project?
-- Payara provides these dependencies as part of the Jakarta EE or Java EE specification.
-- Bean Validation and @Resource DataSource.
-  
+### **Project Structure**
+
+#### **Main Modules**
+1. **Persistence Layer**:
+   - JPA entities for database mapping (`Customer`, `Bakery`, `CustomerOrder`, etc.).
+   - Relationships include One-to-Many (e.g., `CustomerOrder` → `Bakery`).
+
+2. **Service Layer**:
+   - Business logic for managing bakery items (`BakeryService`), customers (`CustomerService`), and orders (`CustomerOrderService`).
+
+3. **Presentation Layer**:
+   - JSF-based web pages for user interaction.
+   - Secure navigation with role-based access.
+
+4. **Security**:
+   - Role-based authentication (`Admin`, `Customer`).
+   - Uses container-based security with groups and permissions.
+
+---
+
+### **Installations**
+
+#### **1. Prerequisites**
+- **Java**: JDK 17+
+- **Payara Server**: 6.2023
+- **Maven**: 3.8+
+- **Database**: MySQL (or similar).
+
+#### **2. Database Setup**
+1. Create a database schema using the provided SQL scripts.
+2. Update `persistence.xml` with your database credentials:
+   ```xml
+   <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bakery_db" />
+   <property name="jakarta.persistence.jdbc.user" value="root" />
+   <property name="jakarta.persistence.jdbc.password" value="password" />
+   ```
+
+#### **3. Build the Application**
+1. Clone the project repository.
+2. Open the project in IntelliJ IDEA or another IDE.
+3. Run the following Maven command:
+   ```bash
+   mvn clean install
+   ```
+
+#### **4. Deploy**
+1. Copy the generated WAR file to the `webapps` directory of your Payara server.
+2. Start the server and navigate to:
+   ```
+   http://localhost:8080/bakery-management
+   ```
+
+---
+
+### **Navigation Flow**
+
+#### **1. Home Page**
+- Links to customer and admin login pages.
+- Shows a welcome message with project details.
+
+#### **2. Customer Dashboard**
+- Displays available bakery items in a data table.
+- Provides options to add items to a cart and search for exisiting products.
+
+#### **3. Admin Dashboard**
+- Displays the list of bakery items with "Edit" and "Delete" buttons.
+- Includes a "Create New Product" button to add new items.
+
+#### **4. Cart Page**
+- Displays the list of items in the customer's cart.
+- Includes a confirm order option.
+
+#### **5. Order Confirmation**
+- Displays a summary of the placed order with the user information.
+
+---
+
+### **Key Functionality**
+
+#### **1. Search Functionality**
+- Customers can search for products by name or description.
+- Uses a `searchKeyword` field to filter products dynamically.
+
+#### **2. Role-Based Security**
+- Admins can manage inventory and add/edit/delete products.
+- Customers can only browse products and place orders.
+
+#### **3. Dynamic Table Actions**
+- Admins can delete products directly from the product table.
+- Customers can add products to their cart using an "Add to Cart" button.
+
+#### **4. Order Management**
+- Each order is associated with a customer and contains multiple bakery items.
+- Orders are saved in the database with total prices calculated.
+
+
+---
+
+### **Developer Notes**
+
+#### **Known Issues**
+- Edge case: Concurrent edits on the same product may overwrite data.
+- Database must be pre-seeded with initial product data for full functionality.
+- Delete the database before every run please run the below code 
+```bash  
+drop database itmd4515; create database itmd4515; use itmd4515; 
+```
+- To login as admin, use 
+```bash  
+admin as username and password
+```
+-  To login as cus, use 
+```bash  
+cus1 as username and password
+```
+-  To login as bakery owner, use 
+```bash  
+bakery1 as username and password
+```
+
+#### **Future Enhancements**
+- Add WebSocket notifications for real-time updates.
+- Enhance security by adding CAPTCHA for login.
+
+#### **Tools Used**
+- IntelliJ IDEA for development.
+- Payara for deployment.
+- Bootstrap for frontend styling.
+
+---
+
+
+
+
