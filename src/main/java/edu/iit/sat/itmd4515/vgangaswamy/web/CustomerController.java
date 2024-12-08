@@ -12,8 +12,10 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Named
 @SessionScoped
@@ -33,6 +35,8 @@ public class CustomerController implements Serializable {
     private Customer customer;
     private CustomerOrder customerOrder;
     private List<Bakery> availableBakeryItems;
+    private List<Bakery> filteredBakeryItems; // For search functionality
+    private String searchKeyword; // Search keyword
 
     private Bakery selectedBakeryItem; // For edit functionality
 
@@ -41,10 +45,31 @@ public class CustomerController implements Serializable {
 
     @PostConstruct
     private void postConstruct() {
-        LOG.info("Inside CustomerController.postConstruct()");
-        customer = new Customer(); // Initialize customer
-        customerOrder = new CustomerOrder(); // Initialize customer order
-        availableBakeryItems = bakeryService.readAll(); // Load bakery items for selection
+        LOG.info("Initializing CustomerController...");
+        customer = new Customer();
+        customerOrder = new CustomerOrder();
+        availableBakeryItems = bakeryService.readAll();
+        filteredBakeryItems = new ArrayList<>(availableBakeryItems); // Initialize filtered list
+    }
+
+    // Search bakery items
+    public void searchProducts() {
+        LOG.info("Searching bakery items with keyword: " + searchKeyword);
+        if (searchKeyword == null || searchKeyword.isBlank()) {
+            filteredBakeryItems = new ArrayList<>(availableBakeryItems);
+        } else {
+            filteredBakeryItems = availableBakeryItems.stream()
+                    .filter(item -> item.getName().toLowerCase().contains(searchKeyword.toLowerCase())
+                            || item.getProductDescription().toLowerCase().contains(searchKeyword.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    // Clear search results
+    public void clearSearch() {
+        LOG.info("Clearing search...");
+        searchKeyword = null;
+        filteredBakeryItems = new ArrayList<>(availableBakeryItems);
     }
 
     // Add product to customer's order
@@ -146,6 +171,10 @@ public class CustomerController implements Serializable {
         return "/customer/welcome.xhtml?faces-redirect=true";
     }
 
+    public String goToCart() {
+        return "/customerOrder/cart.xhtml?faces-redirect=true";
+    }
+
     public List<Bakery> getCustomerOrderItems() {
         return customerOrder.getBakeryItems();
     }
@@ -171,6 +200,22 @@ public class CustomerController implements Serializable {
         return availableBakeryItems;
     }
 
+    public List<Bakery> getFilteredBakeryItems() {
+        return filteredBakeryItems;
+    }
+
+    public void setFilteredBakeryItems(List<Bakery> filteredBakeryItems) {
+        this.filteredBakeryItems = filteredBakeryItems;
+    }
+
+    public String getSearchKeyword() {
+        return searchKeyword;
+    }
+
+    public void setSearchKeyword(String searchKeyword) {
+        this.searchKeyword = searchKeyword;
+    }
+
     public Bakery getSelectedBakeryItem() {
         return selectedBakeryItem;
     }
@@ -178,10 +223,4 @@ public class CustomerController implements Serializable {
     public void setSelectedBakeryItem(Bakery selectedBakeryItem) {
         this.selectedBakeryItem = selectedBakeryItem;
     }
-
-    public String goToCart() {
-        return "/customerOrder/cart.xhtml"; // Specify the path to the cart page
-    }
 }
-
-

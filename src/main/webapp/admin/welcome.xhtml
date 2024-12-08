@@ -16,29 +16,45 @@
               styleClass="table table-striped table-hover"
               value="#{bakeryService.readAll()}" var="bakery">
 
+         <!-- Bakery Name -->
          <h:column>
             <f:facet name="header">Bakery Name</f:facet>
             <h:outputText value="#{bakery.name}"/>
          </h:column>
 
+         <!-- Product Description -->
          <h:column>
             <f:facet name="header">Product Description</f:facet>
             <h:outputText value="#{bakery.productDescription}"/>
          </h:column>
 
+         <!-- Price -->
          <h:column>
             <f:facet name="header">Price</f:facet>
             <h:outputText value="#{bakery.price}"/>
          </h:column>
 
+         <!-- Quantity -->
          <h:column>
             <f:facet name="header">Quantity</f:facet>
             <h:outputText value="#{bakery.quantity}"/>
          </h:column>
 
+         <!-- Availability Status -->
          <h:column>
             <f:facet name="header">Is the product available?</f:facet>
             <h:outputText value="#{bakery.availabilityStatus}" />
+         </h:column>
+
+         <!-- Actions -->
+         <h:column>
+            <f:facet name="header">Actions</f:facet>
+            <h:form>
+               <!-- Delete Button -->
+               <h:commandButton value="Delete"
+                                action="#{customerController.deleteProduct(bakery)}"
+                                styleClass="btn btn-pastel-peach" />
+            </h:form>
          </h:column>
 
       </h:dataTable>

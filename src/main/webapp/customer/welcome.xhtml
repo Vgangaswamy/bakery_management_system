@@ -13,10 +13,22 @@
       <h2>Customer Section</h2>
       <p>Welcome, #{loginController.authenticatedUsername}!</p>
 
+      <!-- Search Bar -->
+      <h:form>
+         <div class="mb-3">
+            <h:inputText id="searchKeyword" value="#{customerController.searchKeyword}"
+                         placeholder="Search by name or description..." styleClass="form-control" />
+         </div>
+         <div class="d-grid gap-2">
+            <h:commandButton value="Search" action="#{customerController.searchProducts}" styleClass="btn btn-pastel-green" />
+            <h:commandButton value="Clear" action="#{customerController.clearSearch}" styleClass="btn btn-pastel-yellow" />
+         </div>
+      </h:form>
+
       <!-- Display Bakery Products -->
       <h:dataTable
-              styleClass="table table-striped table-hover"
-              value="#{bakeryService.readAll()}" var="bakery">
+              styleClass="table table-striped table-hover mt-4"
+              value="#{customerController.filteredBakeryItems}" var="bakery">
 
          <!-- Product Name -->
          <h:column>
@@ -49,10 +61,6 @@
                <!-- Add to Cart Button -->
                <h:commandButton value="Add to Cart"
                                 action="#{customerController.addProductToOrder(bakery)}"
-                                styleClass="btn btn-pastel-peach" />
-               <!-- Delete Product Button -->
-               <h:commandButton value="Delete"
-                                action="#{customerController.deleteProduct(bakery)}"
                                 styleClass="btn btn-pastel-peach" />
             </h:form>
          </h:column>
