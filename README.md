@@ -6,6 +6,16 @@
 The **Bakery Management System** is a Java EE-based web application designed to manage bakery operations efficiently. It provides role-based functionality for customers and administrators, including product browsing, order management, and inventory control.
 
 ### **Screenschots**
+<img width="1512" alt="Admin Section" src="https://github.com/user-attachments/assets/3befc730-1ca5-455f-9d26-68f3c7c01a14" />
+<img width="1512" alt="Cart page" src="https://github.com/user-attachments/assets/5ccc9939-d62b-475b-bd59-4919d0aab95d" />
+<img width="1512" alt="Create products" src="https://github.com/user-attachments/assets/a317ea09-ef52-49ae-9a83-e5aaf5903c84" />
+<img width="1512" alt="Customer Section" src="https://github.com/user-attachments/assets/0725294b-552d-4090-94a2-e445a08a966f" />
+<img width="1512" alt="Login Page" src="https://github.com/user-attachments/assets/8d76b4cd-aac1-4dbb-9c9c-8dee5fff3910" />
+<img width="1512" alt="order confirmation" src="https://github.com/user-attachments/assets/2dde7bab-a42f-40a1-91f9-45033de867cb" />
+<img width="1512" alt="Product Confirmation page" src="https://github.com/user-attachments/assets/47fee8a1-e591-4be7-bdcf-cb8b8eb656a3" />
+<img width="1512" alt="Sign up Page" src="https://github.com/user-attachments/assets/c9c85c1b-891a-4d9d-b6c9-81e713233e71" />
+<img width="1512" alt="Screenshot 2024-12-07 at 11 45 02 PM" src="https://github.com/user-attachments/assets/67abd844-88d9-48c4-a0b4-46ecf4f59c2c" />
+<img width="1512" alt="Screenshot 2024-12-07 at 11 45 43 PM" src="https://github.com/user-attachments/assets/b8d31b5d-6bb2-4e22-acfe-7b395c3162d6" />
 
 
 ---
