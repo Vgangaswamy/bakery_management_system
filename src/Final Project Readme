@@ -1,0 +1,33 @@
+Project Summary
+The Bakery Management System is a comprehensive web-based application designed to manage bakery operations effectively. The system supports various roles (e.g., customers, admins) and provides functionality for managing products, orders, and user accounts. The project is built using a multi-layer architecture comprising persistence, service, and presentation layers. Security and transactions are managed through container services provided by Payara.
+
+
+o How did you fulfill each requirement of the specification?
+• Design
+o Use this section to describe the design of your final project’s functionality.
+o What functionality did you implement?
+o How does navigation flow from one functional area to another?
+o Also, use this section to list any extra credit you have implemented, and how the
+additional features were incorporated into your design, including your insights.
+
+
+• Requirements (Installation, Compile, Runtime, Database, etc)
+o Use this section to explain how I should install, build and run your project.
+o Write it step-by-step as if I do not have any knowledge of how to do so.
+o What are the versions of the tools, libraries and API’s used in your project?
+• Screen Captures
+o Include enough screen captures to illustrate your working project.
+• Expected Results/Known Issues
+o Use this section to describe any known issues with your project. Nothing is ever
+perfect, and it is better to document issues than ignore them.
+o Also, provide me with a known working test script to follow when I run your
+project. For example:
+▪ Login as user1 with password foo
+▪ Enter a customer name of "Fred" in the search box
+▪ etc
+• Development Insights
+o Use this section to tell me anything you want about the project, and your
+design/development experience during the project.
+o What did you learn?
+o Was there something you would like to explore further?
+o What did you like, or not like?
